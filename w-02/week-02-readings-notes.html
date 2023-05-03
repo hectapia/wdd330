@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font: 14px/20px BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: #313130;
+      background: #fff;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+
+    .one {
+      color: #2d3b45;
+      display: block;
+      padding: 2px;
+      margin: 0 0 2px;
+      line-height: 1.2;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    .two {
+      font-size: .75rem;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+      border: 1px solid #c7cdd1;
+    }
+
+    .three {
+      font-size: .75rem;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+      border: 1px solid #c7cdd1;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 2px;
+      padding: 2px;
+    }
+    code {
+    font-family: Consolas,Lucida Console,Menlo,Monaco,monospace;
+    padding: 2px 4px;
+    background: #f7f4f3;
+    border-radius: 2px;
+    color: #716f6e;
+}
+  </style>
+</head>
+
+<body>
+  <br>
+  <div class="alert"> <strong>
+    Hector Olivares Tapia |
+    Brigham Young University-Idaho |
+    WDD 330 Web Frontend Development II |
+    Week 02: Readings notes|
+    Instructor Johan Baer |
+    May 3, 2023</strong>
+  </div> 
+  <br> 
+  <pre class="one">
+   <h1>Modifying the document</h1>
+  To create DOM nodes, there are two methods: 
+  <h2>Insertion methods</h2>
+  </pre>
+  <pre class="two">
+    &lt;style&gt;
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+    &lt;/style&gt;
+
+    &lt;body&gt;
+    &lt;/body&gt;
+
+    &lt;script&gt;
+    // Creating the message
+    // Creating the message<code> div </code> takes 3 steps:
+        <code>
+        // 1. Create &lt;div&gt; element
+        let div = document.createElement('div');
+        
+        // 2. Set its class to &quot;alert&quot;
+        div.className = &quot;alert&quot;;
+        
+        // 3. Fill it with the content
+        div.innerHTML = &quot;&lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.&quot;;
+      
+        document.body.append(div);
+    &lt;/script&gt;</code>
+  </pre>
+  <script>
+    // Creating the message
+    // Creating the message div  takes 3 steps:
+
+    // 1. Create <div> element
+    let div = document.createElement('div');
+
+    // 2. Set its class to "alert"
+    div.className = "alert";
+
+    // 3. Fill it with the content
+    div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
+    document.body.append(div);
+  </script>
+  <br>
+  <pre class="one">
+    Here we called <code>append</code> on <code>document.body</code>, but we can call <code>append</code>
+    method on any other element, to put another element into it. For instance, we can append something to
+    <code>&lt;div&gt;</code> by calling <code>div.append(anotherElement)</code>.
+
+    Here are more insertion methods, they specify different places where to insert:
+    node.append(...nodes or strings) – append nodes or strings at the end of node,
+    node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+    node.before(...nodes or strings) –- insert nodes or strings before node,
+    node.after(...nodes or strings) –- insert nodes or strings after node,
+    node.replaceWith(...nodes or strings) –- replaces node with the given nodes or strings.
+
+    Arguments of these methods are an arbitrary list of DOM nodes to insert, or text strings (that become text nodes automatically).
+    Let’s see them in action.
+    Here’s an example of using these methods to add items to a list and the text before/after it:
+  </pre>
+
+  <pre class="two">
+
+  <code>&lt;ol id=&quot;ol&quot;&gt;
+  &lt;li&gt;A&lt;/li&gt;
+  &lt;li&gt;B&lt;/li&gt;
+  &lt;li&gt;C&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;script&gt;
+  ol.before('before'); // insert string &quot;before&quot; before &lt;ol&gt;
+  ol.after('after'); // insert string &quot;after&quot; after &lt;ol&gt;
+
+  let liFirst = document.createElement('li');
+  liFirst.innerHTML = 'prepend';
+  ol.prepend(liFirst); // insert liFirst at the beginning of &lt;ol&gt;
+
+  let liLast = document.createElement('li');
+  liLast.innerHTML = 'append';
+  ol.append(liLast); // insert liLast at the end of &lt;ol&gt;
+  &lt;/script&gt;
+</code>
+  </pre>
+
+<div class="alert">
+  <ol id="ol">
+  <li>A</li>
+  <li>B</li>
+  <li>C</li>
+  </ol>
+</div>
+
+<script>
+  ol.before('before'); // insert string "before" before <ol>
+  ol.after('after'); // insert string "after" after <ol>
+
+  let liFirst = document.createElement('li');
+  liFirst.innerHTML = 'prepend';
+  ol.prepend(liFirst); // insert liFirst at the beginning of <ol>
+
+  let liLast = document.createElement('li');
+  liLast.innerHTML = 'append';
+  ol.append(liLast); // insert liLast at the end of <ol>
+</script>
+<br>
+
+<pre class="one">
+  <h2>insertAdjacentHTML/Text/Element</h2>
+  <p>For that we can use another, pretty versatile method:
+    <code>elem.insertAdjacentHTML(where, html)</code>.</p>
+  <p>The first parameter is a code word, specifying where to insert relative to <code>elem</code>. Must be
+    one of the following:</p>
+    "beforebegin" – insert html immediately before elem,
+    "afterbegin" – insert html into elem, at the beginning,
+    "beforeend" – insert html into elem, at the end,
+    "afterend" – insert html immediately after elem.
+    
+    The second parameter is an HTML string, that is inserted “as HTML”.
+    For instance:  
+</pre>
+<pre class="two">
+  <code>
+    &lt;div id=&quot;div&quot;&gt;World&lt;/div&gt;
+  
+    &lt;script&gt;
+      div.insertAdjacentHTML('beforebegin', '&lt;p&gt;Hello&lt;/p&gt;');
+      div.insertAdjacentHTML('afterend', '&lt;p&gt;Bye&lt;/p&gt;');
+    &lt;/script&gt;</code>
+
+</pre>
+
+<div class="alert">
+<div id="divA">World</div>
+</div>
+
+<script>
+  divA.insertAdjacentHTML('beforebegin', '<p>Hello</p>');
+  divA.insertAdjacentHTML('afterend', '<p>Bye</p>');
+</script>
+<br>
+
+<pre class="one">
+<h2>Node removal</h2>
+<p>To remove a node, there’s a method <code>node.remove()</code>.</p>
+<p>Let’s make our message disappear after three seconds:</p>
+</pre>
+<pre class="two">
+  <code>    
+    &lt;script&gt;
+      let div = document.createElement('div');
+      div.className = &quot;alert&quot;;
+      div.innerHTML = &quot;&lt;strong&gt;Hi there!&lt;/strong&gt; our message disappear after three seconds.&quot;;
+    
+      document.body.append(div);
+      setTimeout(() =&gt; div.remove(), 3000);
+    &lt;/script&gt;
+  </code>
+</pre>
+
+<script>
+  let divC = document.createElement('div');
+  divC.className = "alert";
+  divC.innerHTML = "<strong>Hi there!</strong> our message disappear after three seconds.";
+  document.body.append(divC);
+  setTimeout(() => divC.remove(), 3000);
+</script>
+<br>
+
+<pre class="one">
+  <p>Please note: if we want to <em>move</em> an element to another place – there’s no need to remove it
+    from the old one.</p>
+  <p><strong>All insertion methods automatically remove the node from the old place.</strong></p>
+</pre>
+<pre class="two">
+  <code>
+    &lt;div id=&quot;first&quot;&gt;First&lt;/div&gt;
+    &lt;div id=&quot;second&quot;&gt;Second&lt;/div&gt;
+    &lt;script&gt;
+      // no need to call remove
+      second.after(first); // take #second and after it insert #first
+    &lt;/script&gt;
+  </code>
+</pre>
+
+<div class="alert">
+<div id="first">First</div>
+<div id="second">Second</div>
+</div>
+
+<script>
+  // no need to call remove
+  second.after(first); // take #second and after it insert #first
+</script>
+
+<br>
+
+<pre class="one">
+<h2>Cloning nodes: </h2>
+How to insert one more similar message?
+We could make a function and put the code there. But the alternative way would be to <em>clone</em>
+the existing <code>div</code> and modify the text inside it (if needed).
+Sometimes when we have a big element, that may be faster and simpler.
+  
+The call <code>elem.cloneNode(true)</code> creates a “deep” clone of the element – with all
+attributes and subelements. If we call <code>elem.cloneNode(false)</code>, then the clone is made
+without child elements.</li>
+
+</pre>
+<pre class="two">
+  <code>
+    &lt;div class=&quot;alert&quot; id=&quot;div&quot;&gt;
+      &lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.
+    &lt;/div&gt;
+    
+    &lt;script&gt;
+      let div2 = div.cloneNode(true); // clone the message
+      div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
+    
+      div.after(div2); // show the clone after the existing div
+    &lt;/script&gt;
+  </code>
+</pre>
+
+<div class="alert" id="divD">
+  <strong>Hi there!</strong> You've read an important message.
+</div>
+
+<script>
+  let div2 = divD.cloneNode(true); // clone the message
+  div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
+
+  divD.after(div2); // show the clone after the existing div
+</script>
+<br>
+
+<pre class="one">
+  <h2>DocumentFragment</h2>
+  <code>DocumentFragment</code> is a special DOM node that serves as a wrapper to pass around lists of nodes.
+  We can append other nodes to it, but when we insert it somewhere, then its content is insertedinstead.
+  For example, <code>getListContent</code> below generates a fragment with <code>&lt;li&gt;</code>
+  items, that are later inserted into <code>&lt;ul&gt;</code>:
+</pre>
+<pre class="two">
+  <code>&lt;ul id=&quot;ul&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+    function getListContent() {
+      let fragment = new DocumentFragment();
+    
+      for(let i=1; i&lt;=3; i++) {
+        let li = document.createElement('li');
+        li.append(i);
+        fragment.append(li);
+      }
+    
+      return fragment;
+    }
+    
+    ul.append(getListContent()); // (*)
+    &lt;/script&gt;</code>
+</pre>
+
+<ul id="ul"></ul>
+
+<script>
+function getListContent() {
+  let fragment = new DocumentFragment();
+
+  for(let i=1; i<=3; i++) {
+    let li = document.createElement('li');
+    li.append(i);
+    fragment.append(li);
+  }
+
+  return fragment;
+}
+
+ul.append(getListContent()); // (*)
+</script>
+<br>
+
+<pre class="one">
+  <h1>LocalStorage, sessionStorage</h1>
+  Web storage objects <code>localStorage</code> and <code>sessionStorage</code> allow to save key/value pairs in the browser.
+  What’s interesting about them is that the data survives a page refresh (for <code>sessionStorage</code>) and even a full 
+  browser restart (for <code>localStorage</code>).
+  We already have cookies. Why additional objects?
+  
+  Unlike cookies, web storage objects are not sent to server with each request. Because of that, we
+  can store much more. Most modern browsers allow at least 5 megabytes of data (or more) and have settings to configure that.
+  Also unlike cookies, the server can’t manipulate storage objects via HTTP headers. Everything’s done in JavaScript.
+  The storage is bound to the origin (domain/protocol/port triplet). That is, different protocols or
+  subdomains infer different storage objects, they can’t access data from each other.
+  
+  Both storage objects provide the same methods and properties:
+
+    <code>setItem(key, value)</code> – store key/value pair.
+    <code>getItem(key)</code> – get the value by key.
+    <code>removeItem(key)</code> – remove the key with its value.
+    <code>clear()</code> – delete everything.
+    <code>key(index)</code> – get the key on a given position.
+    <code>length</code> – the number of stored items.
+  
+  As you can see, it’s like a <code>Map</code> collection (<code>setItem/getItem/removeItem</code>),
+  but also allows access by index with <code>key(index)</code>.
+  Let’s see how it works.
+  <h2>localStorage demo</a>
+  </h2>
+  The main features of <code>localStorage</code> are:
+  
+  Shared between all tabs and windows from the same origin.
+  The data does not expire. It remains after the browser restart and even OS reboot.
+  
+  For instance, if you run this code…
+</pre>
+<pre class="two">
+  <code>
+  &lt;script&gt;
+      localStorage.setItem('test', 1);
+      alert( localStorage.getItem('test') );
+      delete localStorage.test;
+      alert( localStorage.getItem('test') );
+  &lt;/script&gt;
+
+  <button onclick="myFunctionA()">Click me</button>
+</code>
+</pre>
+
+<script>
+  function myFunctionA() {
+  localStorage.setItem('test', 1);
+  alert( localStorage.getItem('test') );
+  delete localStorage.test;
+  alert( localStorage.getItem('test') );
+  }
+</script>
+<br>
+
+<pre class="one">
+  <h2>Looping over keys</h2>
+  As we’ve seen, the methods provide “get/set/remove by key” functionality. But how to get all saved
+    values or keys?
+  Unfortunately, storage objects are not iterable.
+  One way is to loop over them as over an array:
+</pre>
+<pre class="two">
+  <code>
+    for(let i=0; i&lt;localStorage.length; i++) {
+    let key = localStorage.key(i);
+    alert(`${key}: ${localStorage.getItem(key)}`);
+  }
+
+  <button onclick="myFunctionB()">Click me</button>
+</code>
+</pre>
+
+<script>
+  function myFunctionB() {
+    for(let i=0; i<localStorage.length; i++) {
+      let key = localStorage.key(i);
+      alert(`${key}: ${localStorage.getItem(key)}`);
+    }
+  }  
+</script>
+<br>
+
+<pre class="one">
+  <h2>Strings only</h2>
+  Please note that both key and value must be strings.
+  If they were any other type, like a number, or an object, they would get converted to a string
+</pre>
+<pre class="two">
+  <code>
+    localStorage.user = JSON.stringify({name: &quot;John&quot;});
+
+    // sometime later
+    let user = JSON.parse( localStorage.user );
+    alert( user.name ); // John
+
+    // added formatting options to JSON.stringify to make the object look nicer
+    alert( JSON.stringify(localStorage, null, 2) );
+
+    <button onclick="myFunctionC()">Click me</button>
+  </code>
+</pre>
+
+<script>
+    function myFunctionC() {
+      localStorage.user = JSON.stringify({name: "John"});
+      
+      // sometime later
+      let user = JSON.parse( localStorage.user );
+      alert( user.name ); // John
+
+      // added formatting options to JSON.stringify to make the object look nicer
+      alert( JSON.stringify(localStorage, null, 2) );
+    }
+  </script>
+  <br>
+
+  <pre class="one">
+  <h2>sessionStorage</h2>
+  The <code>sessionStorage</code> object is used much less often than <code>localStorage</code>.
+  Properties and methods are the same, but it’s much more limited:
+  
+  The <code>sessionStorage</code> exists only within the current browser tab.
+      
+  Another tab with the same page will have a different storage.
+  But it is shared between iframes in the same tab (assuming they come from the same origin).
+  
+  The data survives page refresh, but not closing/opening the tab.
+  </pre>
+  <br>
+  <pre class="one">
+  <h1>Export and Import</h1>
+  Export and import directives have several syntax variants.
+  In the previous article we saw a simple use, now let’s explore more examples.
+  Export before declarations</a></h2>
+  We can label any declaration as exported by placing <code>export</code> before it, be it a variable, function or a class.
+  For instance, here all exports are valid:
+  </pre>
+  <pre class="two">
+    <code>
+      // export an array
+      export let months = ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      
+      // export a constant
+      export const MODULES_BECAME_STANDARD_YEAR = 2015;
+      
+      // export a class
+      export class User {
+        constructor(name) {
+          this.name = name;
+        }
+      }</code>
+  </pre>
+  <pre class="one">
+  <h3> No semicolons after export</h3>
+   Please note that <code>export</code> before a class or a function does not make it a function expression. 
+   It’s still a function declaration, albeit
+      exported.
+    Most JavaScript style guides don’t recommend semicolons after function and class declarations.
+    
+    That’s why there’s no need for a semicolon at the end of <code>export class</code> and
+      <code>export function</code>:
+    <br> 
+    <h2>Export apart from declarations</h2>
+    Also, we can put <code>export</code> separately.
+    Here we first declare, and then export:  
+  </pre>
+  <pre class="two">
+    <code>
+    // 📁 say.js
+    function sayHi(user) {
+      alert(`Hello, ${user}!`);
+    }
+
+    function sayBye(user) {
+      alert(`Bye, ${user}!`);
+    }
+
+    export {sayHi, sayBye}; // a list of exported variables</code>
+  </pre>
+  <br>
+  <pre class="one">
+  <h2>Import *</h2>
+  Usually, we put a list of what to import in curly braces <code>import {...}</code>, like this:
+  But if there’s a lot to import, we can import everything as an object using <code>import * as &lt;obj&gt;</code>, for instance:
+  </pre>
+  <pre class="two">
+    <code>
+  // 📁 main.js
+  import {sayHi, sayBye} from './say.js';
+  
+  sayHi('John'); // Hello, John!
+  sayBye('John'); // Bye, John!
+  // 📁 main.js
+  import * as say from './say.js';
+  
+  say.sayHi('John');
+  say.sayBye('John');</code>
+    </pre>
+    <br>
+    <pre class="one">
+  At first sight, “import everything” seems such a cool thing, short to write, why should we ever
+  explicitly list what we need to import?
+  Well, there are few reasons.
+
+  Explicitly listing what to import gives shorter names: <code>sayHi()</code> instead of
+  <code>say.sayHi()</code>.
+  Explicit list of imports gives better overview of the code structure: what is used and where. It
+  makes code support and refactoring easier.
+  <h2>Import “as”</h2>
+  We can also use <code>as</code> to import under different names.
+  For instance, let’s import <code>sayHi</code> into the local variable <code>hi</code> for brevity,
+  and import <code>sayBye</code> as <code>bye</code>:
+</pre>
+<pre class="two">
+    <code>
+      // 📁 main.js
+      import {sayHi as hi, sayBye as bye} from './say.js';
+      
+      hi('John'); // Hello, John!
+      bye('John'); // Bye, John!</code>
+  </pre>
+  <br>
+  <pre class="one">
+  <h2>Export “as”</h2>
+  The similar syntax exists for <code>export</code>.
+  Let’s export functions as <code>hi</code> and <code>bye</code>:
+  Now <code>hi</code> and <code>bye</code> are official names for outsiders, to be used in imports:
+</pre>
+<pre class="two">
+  <code>
+    // 📁 say.js
+  ...
+  export {sayHi as hi, sayBye as bye};
+
+  // 📁 main.js
+  import * as say from './say.js';
+
+  say.hi('John'); // Hello, John!
+  say.bye('John'); // Bye, John!
+</code>
+</pre>
+<pre class="one">
+  <h2>Export default</h2>
+  In practice, there are mainly two kinds of modules.
+  
+  Modules that contain a library, pack of functions, like <code>say.js</code> above.
+  Modules that declare a single entity, e.g. a module <code>user.js</code> exports only
+  <code>class User</code>.
+
+  Mostly, the second approach is preferred, so that every “thing” resides in its own module.
+  Naturally, that requires a lot of files, as everything wants its own module, but that’s not a problem
+  at all. Actually, code navigation becomes easier if files are well-named and structured into folders.
+  
+  Modules provide a special <code>export default</code> (“the default export”) syntax to make the “one
+  thing per module” way look better.
+  Put <code>export default</code> before the entity to export:
+
+  There may be only one <code>export default</code> per file.
+  …And then import it without curly braces:
+</pre>
+<pre class="two">
+  <code>
+  // 📁 user.js
+  export default class User { // just add &quot;default&quot;
+    constructor(name) {
+      this.name = name;
+    }
+  }
+  
+  // 📁 main.js
+  import User from './user.js'; // not {User}, just User
+  
+  new User('John');
+</code>
+</pre>
+<br>
+<pre class="one">
+  Imports without curly braces look nicer. A common mistake when starting to use modules is to forget
+  curly braces at all. So, remember, <code>import</code> needs curly braces for named exports and
+  doesn’t need them for the default one.
+</pre>
+<br>
+</body>
+</html>
