@@ -8,7 +8,7 @@
   <title>Readings</title>
   <style>
     body {
-      font: 14px/20px BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      font: 14px/20px BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color: #313130;
       background: #fff;
       margin: 0 auto;
@@ -51,607 +51,607 @@
     p {
       margin: 2px;
       padding: 2px;
-      font-size: large;
     }
-
     code {
-      font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-      /*Consolas,Lucida Console,Menlo,Monaco,monospace;*/
-      padding: 2px 4px;
-      background: #f7f4f3;
-      border-radius: 2px;
-      color: #716f6e;
-    }
+    font-family: Consolas,Lucida Console,Menlo,Monaco,monospace;
+    padding: 2px 4px;
+    background: #f7f4f3;
+    border-radius: 2px;
+    color: #716f6e;
+}
   </style>
 </head>
 
 <body>
   <br>
   <div class="alert"> <strong>
-      Hector Olivares Tapia |
-      Brigham Young University-Idaho |
-      WDD 330 Web Frontend Development II |
-      Week 03: Readings notes|
-      Instructor Johan Baer |
-      May 8, 2023</strong>
-  </div>
+    Hector Olivares Tapia |
+    Brigham Young University-Idaho |
+    WDD 330 Web Frontend Development II |
+    Week 02: Readings notes|
+    Instructor Johan Baer |
+    May 3, 2023</strong>
+  </div> 
   <br>
   <pre class="one">
-     
-        <a href="https://uxbert.com/10-mobile-ux-design-principles/#.Y3QWti-B1qs" target="_blank" rel="noreferrer">10 Mobile UX design principles</a>
-        <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction" target="_blank" rel="noopener">MDN Introduction to web APIs</a>
-        <a href="https://javascript.info/settimeout-setinterval" target="_blank" rel="noopener">setTimeout and setInterval</a>
+        From <a href="https://javascript.info/localstorage" target="_blank" rel="noreferrer">https://javascript.info</a>
+        <a href="https://javascript.info/modifying-document" target="_blank" rel="noreferrer">1.7 Modifying the document</a>. 
+        With special attention to the <code>insertAdjacentHTML</code> section.
+        <a href="https://javascript.info/localstorage" target="_blank" rel="noreferrer">4.2 LocalStorage, sessionStorage</a>
+        <a href="https://javascript.info/import-export" target="_blank" rel="noreferrer">13.2 Modules: Import and Export</a>.
+  </pre>
+  <br> 
+  <pre class="one">
+   <h1>Modifying the document</h1>
+  To create DOM nodes, there are two methods: 
+  <h2>Insertion methods</h2>
+  </pre>
+  <pre class="two">
+    &lt;style&gt;
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+    &lt;/style&gt;
+
+    &lt;body&gt;
+    &lt;/body&gt;
+
+    &lt;script&gt;
+    // Creating the message
+    // Creating the message<code> div </code> takes 3 steps:
+        <code>
+        // 1. Create &lt;div&gt; element
+        let div = document.createElement('div');
+        
+        // 2. Set its class to &quot;alert&quot;
+        div.className = &quot;alert&quot;;
+        
+        // 3. Fill it with the content
+        div.innerHTML = &quot;&lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.&quot;;
+      
+        document.body.append(div);
+    &lt;/script&gt;</code>
+  </pre>
+  <script>
+    // Creating the message
+    // Creating the message div  takes 3 steps:
+
+    // 1. Create <div> element
+    let div = document.createElement('div');
+
+    // 2. Set its class to "alert"
+    div.className = "alert";
+
+    // 3. Fill it with the content
+    div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
+    document.body.append(div);
+  </script>
+  <br>
+  <pre class="one">
+    Here we called <code>append</code> on <code>document.body</code>, but we can call <code>append</code>
+    method on any other element, to put another element into it. For instance, we can append something to
+    <code>&lt;div&gt;</code> by calling <code>div.append(anotherElement)</code>.
+
+    Here are more insertion methods, they specify different places where to insert:
+    node.append(...nodes or strings) – append nodes or strings at the end of node,
+    node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+    node.before(...nodes or strings) –- insert nodes or strings before node,
+    node.after(...nodes or strings) –- insert nodes or strings after node,
+    node.replaceWith(...nodes or strings) –- replaces node with the given nodes or strings.
+
+    Arguments of these methods are an arbitrary list of DOM nodes to insert, or text strings (that become text nodes automatically).
+    Let’s see them in action.
+    Here’s an example of using these methods to add items to a list and the text before/after it:
+  </pre>
+
+  <pre class="two">
+
+  <code>&lt;ol id=&quot;ol&quot;&gt;
+  &lt;li&gt;A&lt;/li&gt;
+  &lt;li&gt;B&lt;/li&gt;
+  &lt;li&gt;C&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;script&gt;
+  ol.before('before'); // insert string &quot;before&quot; before &lt;ol&gt;
+  ol.after('after'); // insert string &quot;after&quot; after &lt;ol&gt;
+
+  let liFirst = document.createElement('li');
+  liFirst.innerHTML = 'prepend';
+  ol.prepend(liFirst); // insert liFirst at the beginning of &lt;ol&gt;
+
+  let liLast = document.createElement('li');
+  liLast.innerHTML = 'append';
+  ol.append(liLast); // insert liLast at the end of &lt;ol&gt;
+  &lt;/script&gt;
+</code>
+  </pre>
+
+<div class="alert">
+  <ol id="ol">
+  <li>A</li>
+  <li>B</li>
+  <li>C</li>
+  </ol>
+</div>
+
+<script>
+  ol.before('before'); // insert string "before" before <ol>
+  ol.after('after'); // insert string "after" after <ol>
+
+  let liFirst = document.createElement('li');
+  liFirst.innerHTML = 'prepend';
+  ol.prepend(liFirst); // insert liFirst at the beginning of <ol>
+
+  let liLast = document.createElement('li');
+  liLast.innerHTML = 'append';
+  ol.append(liLast); // insert liLast at the end of <ol>
+</script>
+<br>
+
+<pre class="one">
+  <h2>insertAdjacentHTML/Text/Element</h2>
+  <p>For that we can use another, pretty versatile method:
+    <code>elem.insertAdjacentHTML(where, html)</code>.</p>
+  <p>The first parameter is a code word, specifying where to insert relative to <code>elem</code>. Must be
+    one of the following:</p>
+    "beforebegin" – insert html immediately before elem,
+    "afterbegin" – insert html into elem, at the beginning,
+    "beforeend" – insert html into elem, at the end,
+    "afterend" – insert html immediately after elem.
+    
+    The second parameter is an HTML string, that is inserted “as HTML”.
+    For instance:  
+</pre>
+<pre class="two">
+  <code>
+    &lt;div id=&quot;div&quot;&gt;World&lt;/div&gt;
+  
+    &lt;script&gt;
+      div.insertAdjacentHTML('beforebegin', '&lt;p&gt;Hello&lt;/p&gt;');
+      div.insertAdjacentHTML('afterend', '&lt;p&gt;Bye&lt;/p&gt;');
+    &lt;/script&gt;</code>
+
+</pre>
+
+<div class="alert">
+<div id="divA">World</div>
+</div>
+
+<script>
+  divA.insertAdjacentHTML('beforebegin', '<p>Hello</p>');
+  divA.insertAdjacentHTML('afterend', '<p>Bye</p>');
+</script>
+<br>
+
+<pre class="one">
+<h2>Node removal</h2>
+<p>To remove a node, there’s a method <code>node.remove()</code>.</p>
+<p>Let’s make our message disappear after three seconds:</p>
+</pre>
+<pre class="two">
+  <code>    
+    &lt;script&gt;
+      let div = document.createElement('div');
+      div.className = &quot;alert&quot;;
+      div.innerHTML = &quot;&lt;strong&gt;Hi there!&lt;/strong&gt; our message disappear after three seconds.&quot;;
+    
+      document.body.append(div);
+      setTimeout(() =&gt; div.remove(), 3000);
+    &lt;/script&gt;
+  </code>
+</pre>
+
+<script>
+  let divC = document.createElement('div');
+  divC.className = "alert";
+  divC.innerHTML = "<strong>Hi there!</strong> our message disappear after three seconds.";
+  document.body.append(divC);
+  setTimeout(() => divC.remove(), 3000);
+</script>
+<br>
+
+<pre class="one">
+  <p>Please note: if we want to <em>move</em> an element to another place – there’s no need to remove it
+    from the old one.</p>
+  <p><strong>All insertion methods automatically remove the node from the old place.</strong></p>
+</pre>
+<pre class="two">
+  <code>
+    &lt;div id=&quot;first&quot;&gt;First&lt;/div&gt;
+    &lt;div id=&quot;second&quot;&gt;Second&lt;/div&gt;
+    &lt;script&gt;
+      // no need to call remove
+      second.after(first); // take #second and after it insert #first
+    &lt;/script&gt;
+  </code>
+</pre>
+
+<div class="alert">
+<div id="first">First</div>
+<div id="second">Second</div>
+</div>
+
+<script>
+  // no need to call remove
+  second.after(first); // take #second and after it insert #first
+</script>
+
+<br>
+
+<pre class="one">
+<h2>Cloning nodes: </h2>
+How to insert one more similar message?
+We could make a function and put the code there. But the alternative way would be to <em>clone</em>
+the existing <code>div</code> and modify the text inside it (if needed).
+Sometimes when we have a big element, that may be faster and simpler.
+  
+The call <code>elem.cloneNode(true)</code> creates a “deep” clone of the element – with all
+attributes and subelements. If we call <code>elem.cloneNode(false)</code>, then the clone is made
+without child elements.</li>
+
+</pre>
+<pre class="two">
+  <code>
+    &lt;div class=&quot;alert&quot; id=&quot;div&quot;&gt;
+      &lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.
+    &lt;/div&gt;
+    
+    &lt;script&gt;
+      let div2 = div.cloneNode(true); // clone the message
+      div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
+    
+      div.after(div2); // show the clone after the existing div
+    &lt;/script&gt;
+  </code>
+</pre>
+
+<div class="alert" id="divD">
+  <strong>Hi there!</strong> You've read an important message.
+</div>
+
+<script>
+  let div2 = divD.cloneNode(true); // clone the message
+  div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
+
+  divD.after(div2); // show the clone after the existing div
+</script>
+<br>
+
+<pre class="one">
+  <h2>DocumentFragment</h2>
+  <code>DocumentFragment</code> is a special DOM node that serves as a wrapper to pass around lists of nodes.
+  We can append other nodes to it, but when we insert it somewhere, then its content is insertedinstead.
+  For example, <code>getListContent</code> below generates a fragment with <code>&lt;li&gt;</code>
+  items, that are later inserted into <code>&lt;ul&gt;</code>:
+</pre>
+<pre class="two">
+  <code>&lt;ul id=&quot;ul&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+    function getListContent() {
+      let fragment = new DocumentFragment();
+    
+      for(let i=1; i&lt;=3; i++) {
+        let li = document.createElement('li');
+        li.append(i);
+        fragment.append(li);
+      }
+    
+      return fragment;
+    }
+    
+    ul.append(getListContent()); // (*)
+    &lt;/script&gt;</code>
+</pre>
+
+<ul id="ul"></ul>
+
+<script>
+function getListContent() {
+  let fragment = new DocumentFragment();
+
+  for(let i=1; i<=3; i++) {
+    let li = document.createElement('li');
+    li.append(i);
+    fragment.append(li);
+  }
+
+  return fragment;
+}
+
+ul.append(getListContent()); // (*)
+</script>
+<br>
+
+<pre class="one">
+  <h1>LocalStorage, sessionStorage</h1>
+  Web storage objects <code>localStorage</code> and <code>sessionStorage</code> allow to save key/value pairs in the browser.
+  What’s interesting about them is that the data survives a page refresh (for <code>sessionStorage</code>) and even a full 
+  browser restart (for <code>localStorage</code>).
+  We already have cookies. Why additional objects?
+  
+  Unlike cookies, web storage objects are not sent to server with each request. Because of that, we
+  can store much more. Most modern browsers allow at least 5 megabytes of data (or more) and have settings to configure that.
+  Also unlike cookies, the server can’t manipulate storage objects via HTTP headers. Everything’s done in JavaScript.
+  The storage is bound to the origin (domain/protocol/port triplet). That is, different protocols or
+  subdomains infer different storage objects, they can’t access data from each other.
+  
+  Both storage objects provide the same methods and properties:
+
+    <code>setItem(key, value)</code> – store key/value pair.
+    <code>getItem(key)</code> – get the value by key.
+    <code>removeItem(key)</code> – remove the key with its value.
+    <code>clear()</code> – delete everything.
+    <code>key(index)</code> – get the key on a given position.
+    <code>length</code> – the number of stored items.
+  
+  As you can see, it’s like a <code>Map</code> collection (<code>setItem/getItem/removeItem</code>),
+  but also allows access by index with <code>key(index)</code>.
+  Let’s see how it works.
+  <h2>localStorage demo</a>
+  </h2>
+  The main features of <code>localStorage</code> are:
+  
+  Shared between all tabs and windows from the same origin.
+  The data does not expire. It remains after the browser restart and even OS reboot.
+  
+  For instance, if you run this code…
+</pre>
+<pre class="two">
+  <code>
+  &lt;script&gt;
+      localStorage.setItem('test', 1);
+      alert( localStorage.getItem('test') );
+      delete localStorage.test;
+      alert( localStorage.getItem('test') );
+  &lt;/script&gt;
+
+  <button onclick="myFunctionA()">Click me</button>
+</code>
+</pre>
+
+<script>
+  function myFunctionA() {
+  localStorage.setItem('test', 1);
+  alert( localStorage.getItem('test') );
+  delete localStorage.test;
+  alert( localStorage.getItem('test') );
+  }
+</script>
+<br>
+
+<pre class="one">
+  <h2>Looping over keys</h2>
+  As we’ve seen, the methods provide “get/set/remove by key” functionality. But how to get all saved
+    values or keys?
+  Unfortunately, storage objects are not iterable.
+  One way is to loop over them as over an array:
+</pre>
+<pre class="two">
+  <code>
+    for(let i=0; i&lt;localStorage.length; i++) {
+    let key = localStorage.key(i);
+    alert(`${key}: ${localStorage.getItem(key)}`);
+  }
+
+  <button onclick="myFunctionB()">Click me</button>
+</code>
+</pre>
+
+<script>
+  function myFunctionB() {
+    for(let i=0; i<localStorage.length; i++) {
+      let key = localStorage.key(i);
+      alert(`${key}: ${localStorage.getItem(key)}`);
+    }
+  }  
+</script>
+<br>
+
+<pre class="one">
+  <h2>Strings only</h2>
+  Please note that both key and value must be strings.
+  If they were any other type, like a number, or an object, they would get converted to a string
+</pre>
+<pre class="two">
+  <code>
+    localStorage.user = JSON.stringify({name: &quot;John&quot;});
+
+    // sometime later
+    let user = JSON.parse( localStorage.user );
+    alert( user.name ); // John
+
+    // added formatting options to JSON.stringify to make the object look nicer
+    alert( JSON.stringify(localStorage, null, 2) );
+
+    <button onclick="myFunctionC()">Click me</button>
+  </code>
+</pre>
+
+<script>
+    function myFunctionC() {
+      localStorage.user = JSON.stringify({name: "John"});
+      
+      // sometime later
+      let user = JSON.parse( localStorage.user );
+      alert( user.name ); // John
+
+      // added formatting options to JSON.stringify to make the object look nicer
+      alert( JSON.stringify(localStorage, null, 2) );
+    }
+  </script>
+  <br>
+
+  <pre class="one">
+  <h2>sessionStorage</h2>
+  The <code>sessionStorage</code> object is used much less often than <code>localStorage</code>.
+  Properties and methods are the same, but it’s much more limited:
+  
+  The <code>sessionStorage</code> exists only within the current browser tab.
+      
+  Another tab with the same page will have a different storage.
+  But it is shared between iframes in the same tab (assuming they come from the same origin).
+  
+  The data survives page refresh, but not closing/opening the tab.
   </pre>
   <br>
   <pre class="one">
-
-  <h2>Mobile UX Design Principles</h2>
-    <p>
-    Smartphones have become a go-to source for all sorts of information.
-    
-    Designing a usable and enjoyable mobile experience to satisfy the basic usability principles of interface design.
-    
-    · Learnability: How easily first-time users complete basic tasks. 
-    · Efficiency: How quickly users perform basic tasks once they’ve learned the design.
-    · Memorability: The ability of users to remember how to use the system.
-    · Errors: The amount and severity of errors users make and how easily they can correct them.
-    · Satisfaction: How pleasant the experience of using the design was.
-  </p> 
-  <h1><code>10 tried and tested UX design principles</code></h1>
-    
-  <h2>1. Content Prioritization </h2>
-    
-    Human attention spans are 8 seconds. This makes it important to grab your users’ attention to interact with your products.
-    Less is more. keep interface elements to a minimum. Simple designs are what keep the user engaged and at ease with products.
-    Display essential content and functionalities the user needs. The limited space makes every additional element you add overwhelming to your users. Secondary content should be available through a menu. Menu lists should have progressive disclosure and simple terminology. Use icons instead of text wherever possible.
-    Prioritize content, remember notifications for new content should appear without interrupting primary content!
-    
-  <h2>2. Make Navigation Intuitive</h2>
-    
-    “If the user can’t use it, it doesn’t work.”– Susan Dray
-    Learnability of your design is key for its success. Users should intuitively be able to navigate through your app via clear pathways and be able to complete all primary tasks without requiring any explanations.
-    Users lack the patience to try to work through complex steps to get what they want. If it takes too much time or effort to discover how to navigate through your product, chances are you’re just going to lose your users.
-    User journeys should be logical enough that a task is accomplished within a single app. Don’t make users have to switch between pages and apps to get something done. Simplify the process and have all the information needed readily available.
-    When navigating through your app, the user should always know where they are without wondering how they got there, or what they are to do next. 
-    
-  <h2>3. Touchscreen Target Sizes</h2>
-    
-    Making interface elements big enough to capture the interaction with touch screens using fingers.
-    Not only is the size of the target important, but so is the spacing between targets. If action buttons are too close to each other, you risk the user making undesired actions leading to frustration. Including an undo button in your designs will relieve many people.
-    
-  <h2>4. Provide User Control</h2>
-    
-    Changing settings, controlling notifications, and canceling actions provide the user with a sense of control over the system.
-    Users need to know what’s going on, let them know! Integrate status and other types of feedback into your interface without disrupting the user’s workflow. This gives the user a sense of freedom and transparency.
-    
-  <h2>5. Legible Text Content</h2>
-    
-    The key to mobile typography is readability. If users can’t read your content, there’s no point in offering content in the first place.
-    Content should be accommodated for smaller screens while maintaining all the necessary information.
-    Spacing and layout are also important to improve legibility.
-    
-  <h2>6. Make Interface Elements Clearly Visible</h2>
-    
-    Having sufficient contrast between content and background in your designs it’s legible, in any setting, even outside in the sunlight.  WC3’s Web Content Accessibility Guidelines
-    
-  <h2>7. Hand Position Controls</h2>
-    
-    Hand positions should be kept in mind when placing controls on a mobile design. 
-    Common features should be placed in easily accessible regions, while actions such as delete buttons should be placed in areas harder to reach to avoid errors.
-    Keeping in mind right- and left-handedness is also a design feature to consider.
-    
-  <h2>8. Minimize Data Input</h2>
-    
-    Typing on small devices can be annoying, so minimizing the need to enter data in your designs.
-    
-  <h2>9. Create a Seamless Experience</h2>
-    
-    Focus on key user goals by reducing friction, minimizing steps and page loads to decrease interaction time.
-    Users appreciate smooth interactions with designs and are satisfied when their needs are met effortlessly.
-    Synchronization across devices is a key priority for creating seamless experiences.
-    Go beyond basic usability features to create pleasant and addictive experiences. Communicate with your users to understand what they need, and deliver it.
-    
-  <h2>10. Test Your Design</h2>
-    
-  Test early. Test often. The key to any successful product is to continuously test and optimize. The earlier you discover your problems, the easier and cheaper it is to fix them.
-  
-
-<h1><code>Introduction to web APIs</code></h1>
-
-<h2>What are APIs?</h2>
-Application Programming Interfaces (APIs) are constructs made available in programming languages to allow developers to create complex functionality more easily. They abstract more complex code away from you, providing some easier syntax to use in its place.
-
-<h2>APIs in client-side JavaScript</h2>
-Client-side JavaScript, in particular, has many APIs available to it — these are not part of the JavaScript language itself, rather they are built on top of the core JavaScript language, providing you with extra superpowers to use in your JavaScript code. They generally fall into two categories:
-• Browser APIs are built into your web browser and are able to expose data from the browser and surrounding computer environment and do useful complex things with it. 
-• Third-party APIs are not built into the browser by default, and you generally have to retrieve their code and information from somewhere on the Web. 
-
-<h2>Relationship between JavaScript, APIs, and other JavaScript tools</h2>
-• JavaScript — A high-level scripting language built into browsers that allows you to implement functionality on web pages/apps. Note that JavaScript is also available in other programming environments, such as Node.
-• Browser APIs — constructs built into the browser that sits on top of the JavaScript language and allows you to implement functionality more easily.
-• Third-party APIs — constructs built into third-party platforms that allow you to use some of those platform's functionality in your own web pages.
-• JavaScript libraries — Usually one or more JavaScript files containing custom functions that you can attach to your web page to speed up or enable writing common functionality. Examples include jQuery, Mootools and React.
-• JavaScript frameworks — The next step up from libraries, JavaScript frameworks (e.g. Angular and Ember) tend to be packages of HTML, CSS, JavaScript, and other technologies that you install and then use to write an entire web application from scratch. The key difference between a library and a framework is "Inversion of Control". When calling a method from a library, the developer is in control. With a framework, the control is inverted: the framework calls the developer's code.
-<h2>What can APIs do?</h2>
-There are a huge number of APIs available in modern browsers that allow you to do a wide variety of things in your code. You can see this by taking a look at the MDN APIs index page.
-<h2>Common browser APIs</h2>
-In particular, the most common categories of browser APIs you'll use (and which we'll cover in this module in greater detail) are:
-• APIs for manipulating documents loaded into the browser. The most obvious example is the DOM (Document Object Model) API, which allows you to manipulate HTML and CSS — creating, removing and changing HTML, dynamically applying new styles to your page, etc. Every time you see a popup window appear on a page or some new content displayed, for example, that's the DOM in action. Find out more about these types of API in Manipulating documents.
-• APIs that fetch data from the server to update small sections of a webpage on their own are very commonly used. if you just need to update a stock listing or list of available new stories, doing it instantly without having to reload the whole entire page from the server can make the site or app feel much more responsive and "snappy". The main API used for this is the Fetch API. 
-• APIs for drawing and manipulating graphics are widely supported in browsers the most popular ones are Canvas and WebGL, which allow you to programmatically update the pixel data contained in an HTML &lt;canvas&gt; element to create 2D and 3D scenes. 
-• Audio and Video APIs like HTMLMediaElement, the Web Audio API, and WebRTC allow you to do really interesting things with multimedia such as creating custom UI controls for playing audio and video, displaying text tracks like captions and subtitles along with your videos, grabbing video from your web camera to be manipulated via a canvas (see above) or displayed on someone else's computer in a web conference, or adding effects to audio tracks (such as gain, distortion, panning, etc.).
-• Device APIs enable you to interact with device hardware: for example, accessing the device GPS to find the user's position using the Geolocation API.
-• Client-side storage APIs enable you to store data on the client-side, so you can create an app that will save its state between page loads, and perhaps even work when the device is offline. There are several options available, e.g. simple name/value storage with the Web Storage API, and more complex database storage with the IndexedDB API.
-<h2>Common third-party APIs</h2>
-Third-party APIs come in a large variety; some of the more popular ones that you are likely to make use of sooner or later are:
-• The Twitter API, which allows you to do things like displaying your latest tweets on your website.
-• Map APIs, like Mapquest and the Google Maps API, which allow you to do all sorts of things with maps on your web pages.
-• The Facebook suite of APIs, which enables you to use various parts of the Facebook ecosystem to benefit your app, such as by providing app login using Facebook login, accepting in-app payments, rolling out targeted ad campaigns, etc.
-• The Telegram APIs, which allows you to embed content from Telegram channels on your website, in addition to providing support for bots.
-• The YouTube API, which allows you to embed YouTube videos on your site, search YouTube, build playlists, and more.
-• The Pinterest API, which provides tools to manage Pinterest boards and pins to include them in your website.
-• The Twilio API, which provides a framework for building voice and video call functionality into your app, sending SMS/MMS from your apps, and more.
-• The Mastodon API, which enables you to manipulate features of the Mastodon social network programmatically.
-<h2>How do APIs work?</h2>
-Different JavaScript APIs work in slightly different ways, but generally, they have common features and similar themes to how they work.
-<h2>They are based on objects</h2>
-Your code interacts with APIs using one or more JavaScript objects, which serve as containers for the data the API uses (contained in object properties), and the functionality the API makes available (contained in object methods).
-Let's return to the example of the Web Audio API — this is a fairly complex API, which consists of a number of objects. The most obvious ones are:
-• AudioContext, which represents an audio graph that can be used to manipulate audio playing inside the browser, and has a number of methods and properties available to manipulate that audio.
-• MediaElementAudioSourceNode, which represents an &lt;audio&gt; element containing sound you want to play and manipulate inside the audio context.
-• AudioDestinationNode, which represents the destination of the audio, i.e. the device on your computer that will actually output it — usually your speakers or headphones.
-
-</pre>
+  <h1>Export and Import</h1>
+  Export and import directives have several syntax variants.
+  In the previous article we saw a simple use, now let’s explore more examples.
+  Export before declarations</a></h2>
+  We can label any declaration as exported by placing <code>export</code> before it, be it a variable, function or a class.
+  For instance, here all exports are valid:
+  </pre>
   <pre class="two">
-  <code>
-    &lt;audio src="outfoxing.mp3">&lt;/audio&gt;
-
-    &lt;button class="paused">Play&lt;/button&gt;
-    
-    &lt;input type="range" min="0" max="1" step="0.01" value="1" class="volume" /&gt;
-
-    &lt;script&gt;
-        const em = document.createElement('em'); // create a new em element
-        const para = document.querySelector('p'); // reference an existing p element
-        em.textContent = 'Hello there!'; // give em some text content
-        para.appendChild(em); // embed em inside para
-
-
-      // Create an AudioContext (cross browser)
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      const audioCtx = new AudioContext();
-
-      // store references to our HTML elements
-      const audioElement = document.querySelector("audio");
-      const playBtn = document.querySelector("button");
-      const volumeSlider = document.querySelector(".volume");
-
-      // load the audio source into our audio graph
-      const audioSource = audioCtx.createMediaElementSource(audioElement);
-
-      // play/pause audio
-      playBtn.addEventListener("click", () => {
-        // check if context is in suspended state (autoplay policy)
-        if (audioCtx.state === "suspended") {
-          audioCtx.resume();
+    <code>
+      // export an array
+      export let months = ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      
+      // export a constant
+      export const MODULES_BECAME_STANDARD_YEAR = 2015;
+      
+      // export a class
+      export class User {
+        constructor(name) {
+          this.name = name;
         }
-
-        // if track is stopped, play it
-        if (playBtn.getAttribute("class") === "paused") {
-          audioElement.play();
-          playBtn.setAttribute("class", "playing");
-          playBtn.textContent = "Pause";
-          // if track is playing, stop it
-        } else if (playBtn.getAttribute("class") === "playing") {
-          audioElement.pause();
-          playBtn.setAttribute("class", "paused");
-          playBtn.textContent = "Play";
-        }
-      });
-
-      // if track ends
-      audioElement.addEventListener("ended", () => {
-        playBtn.setAttribute("class", "paused");
-        playBtn.textContent = "Play";
-      });
-
-      // volume
-      const gainNode = audioCtx.createGain();
-
-      volumeSlider.addEventListener("input", () => {
-        gainNode.gain.value = volumeSlider.value;
-      });
-
-      // connect our graph
-      audioSource.connect(gainNode).connect(audioCtx.destination);
-
-      // Track credit: Outfoxing the Fox by Kevin MacLeod under Creative Commons
-    &lt;/script&gt;  
-  </code>
-</pre>
-<div class="alert">
-  <iframe src="https://mdn.github.io/learning-area/javascript/apis/introduction/web-audio/" 
-  title="API introduction"
-  style="height: 70px; width: 170px; border: none;"></iframe><br>
-  <a href="https://mdn.github.io/learning-area/javascript/apis/introduction/web-audio/"><em>mdn learning-area</em></a>
-</div>
-<br>
+      }</code>
+  </pre>
   <pre class="one">
-So how do these objects interact? If you look at our simple web audio example (see it live also), 
-The audio starts in the source, which is then connected to the gain node so the audio's volume can be adjusted. The gain node is then connected to the destination node so the sound can be played on your computer (the AudioContext.destination property represents whatever is the default AudioDestinationNode available on your computer's hardware, e.g. your speakers).
-<h2>They have recognizable entry points</h2>
-When using an API, you should make sure you know where the entry point is for the API. In The Web Audio API, this is pretty simple — it is the AudioContext object, which needs to be used to do any audio manipulation whatsoever.
-The Document Object Model (DOM) API also has a simple entry point — its features tend to be found hanging off the Document object, or an instance of an HTML element that you want to affect in some way, for example:
-</pre>
-<pre class="two">
-
-  &lt;p id="para"&gt;&lt;/p&gt;  
-
-  &lt;script&gt;  
-    const em = document.createElement('em'); // create a new em element
-    const para = document.getElementById('para'); // reference an existing id="para" in a p element
-    em.textContent = 'Hello there!'; // give em some text content
-    para.appendChild(em); // embed em inside para
-  &lt;/script&gt;  
-
-</pre>
-<div class="alert">
-  <p id="para"></p>  
-
-  <script>  
-    const em = document.createElement('em'); // create a new em element
-    const para = document.getElementById('para'); // reference an existing p element
-    em.textContent = 'Hello there!'; // give em some text content
-    para.appendChild(em); // embed em inside para
-  </script> 
-</div>
-<br>
-<pre class="one">
-<h2>They often use events to handle changes in state</h2>
-Some web APIs contain no events, but most contain at least a few. The handler properties that allow us to run functions when events fire are generally listed in our reference material in separate "Event handlers" sections.
-They have additional security mechanisms where appropriate
-WebAPI features are subject to the same security considerations as JavaScript and other web technologies (for example same-origin policy), but they sometimes have additional security mechanisms in place. For example, some of the more modern WebAPIs will only work on pages served over HTTPS due to them transmitting potentially sensitive data (examples include Service Workers and Push).
-In addition, some WebAPIs request permission to be enabled from the user once calls to them are made in your code. As an example, the Notifications API asks for permission using a pop-up dialog box:
-The Web Audio and HTMLMediaElement APIs are subject to a security mechanism called autoplay policy — this basically means that you can't automatically play audio when a page loads — you've got to allow your users to initiate audio play through a control like a button. This is done because autoplaying audio is usually really annoying and we really shouldn't be subjecting our users to it.
-</pre>
-<br>
-<pre class="one">
-
-<h1><code>setTimeout and setInterval</code></h1>
-
-We may decide to execute a function not right now, but at a certain time later. That’s called “scheduling a call”.
-
-There are two methods for it:
-
-setTimeout allows us to run a function once after the interval of time.
-setInterval allows us to run a function repeatedly, starting after the interval of time, then repeating continuously at that interval.
-These methods are not a part of JavaScript specification. But most environments have the internal scheduler and provide these methods. In particular, they are supported in all browsers and Node.js.
-
-<h2>setTimeout</h2>
-The syntax:
-</pre>
-<pre class="two">
-
-  let timerId = setTimeout(func|code, [delay], [arg1], [arg2], ...)
-
-</pre>
-<pre class="one">
-Parameters:
-
-func|code
-Function or a string of code to execute. Usually, that’s a function. For historical reasons, a string of code can be passed, but that’s not recommended.
-delay
-The delay before run, in milliseconds (1000 ms = 1 second), by default 0.
-arg1, arg2…
-Arguments for the function
-For instance, this code calls sayHi() after one second:
-</pre>
-
-<pre class="two">
-
-  function sayHi() {
-    alert('Hello');
-  }
-
-  setTimeout(sayHi, 1000);
-
-  <button onclick="myFunctionA()">Click me</button>
-
-</pre>
-<script> 
-  function myFunctionA() {
-    function sayHi() {
-      alert('Hello');
+  <h3> No semicolons after export</h3>
+   Please note that <code>export</code> before a class or a function does not make it a function expression. 
+   It’s still a function declaration, albeit
+      exported.
+    Most JavaScript style guides don’t recommend semicolons after function and class declarations.
+    
+    That’s why there’s no need for a semicolon at the end of <code>export class</code> and
+      <code>export function</code>:
+    <br> 
+    <h2>Export apart from declarations</h2>
+    Also, we can put <code>export</code> separately.
+    Here we first declare, and then export:  
+  </pre>
+  <pre class="two">
+    <code>
+    // 📁 say.js
+    function sayHi(user) {
+      alert(`Hello, ${user}!`);
     }
 
-    setTimeout(sayHi, 1000);
-  }
-</script>
-<pre class="one">
-With arguments:
-</pre>
-<pre class="two">
-
-  function sayHi(phrase, who) {
-    alert( phrase + ', ' + who );
-  }
-
-  setTimeout(sayHi, 1000, "Hello", "John"); // Hello, John
-
-  <button onclick="myFunctionB()">Click me</button>
-
-</pre>
-<script>
-  function myFunctionB() {
-    function sayHi(phrase, who) {
-      alert( phrase + ', ' + who );
+    function sayBye(user) {
+      alert(`Bye, ${user}!`);
     }
 
-    setTimeout(sayHi, 1000, "Hello", "John"); // Hello, John
-  }
-</script>
-<pre class="one">
-If the first argument is a string, then JavaScript creates a function from it.
-
-So, this will also work:
-</pre>
-<pre class="two">
-
-  setTimeout("alert('Hello')", 1000);
-
-  <button onclick="myFunctionC()">Click me</button>
-
-</pre>
-<script>
-  function myFunctionC() {
-    setTimeout("alert('Hello')", 1000);
-  }
-</script>
-<pre class="one">
-But using strings is not recommended, use arrow functions instead of them, like this:
-</pre>
-<pre class="two">
-
-  setTimeout(() => alert('Hello'), 1000);
-
-  <button onclick="myFunctionD()">Click me</button>
-
-</pre>
-<script>
-  function myFunctionD(){
-    setTimeout(() => alert('Hello'), 1000);
-  }  
-</script>
-<pre class="one">
-<h2>Canceling with clearTimeout</h2>
-A call to setTimeout returns a “timer identifier” timerId that we can use to cancel the execution.
-
-The syntax to cancel:
-</pre>
-<pre class="two">
-
-  let timerId = setTimeout(...);
-  clearTimeout(timerId);
-
-</pre>
-<pre class="one">
-In the code below, we schedule the function and then cancel it (changed our mind). As a result, nothing happens:
-</pre>
-<pre class="two">
-
-  let timerId = setTimeout(() => alert("never happens"), 1000);
-  alert(timerId); // timer identifier
-
-  clearTimeout(timerId);
-  alert(timerId); // same identifier (doesn't become null after canceling)
-
-  <button onclick="myFunctionE()">Click me</button>
-
-</pre>
-<script>
-  function myFunctionE(){
-    let timerId = setTimeout(() => alert("never happens"), 1000);
-    alert(timerId); // timer identifier
-
-    clearTimeout(timerId);
-    alert(timerId); // same identifier (doesn't become null after canceling)
-  }
-</script>
-<pre class="one">
-As we can see from alert output, in a browser the timer identifier is a number. In other environments, this can be something else. For instance, Node.js returns a timer object with additional methods.
-
-Again, there is no universal specification for these methods, so that’s fine.
-
-For browsers, timers are described in the timers section of HTML Living Standard.
-
-<h2>setInterval</h2>
-The setInterval method has the same syntax as setTimeout:
-</pre>
-<pre class="two">
-
-  let timerId = setInterval(func|code, [delay], [arg1], [arg2], ...)
-
-</pre>
-<pre class="one">
-All arguments have the same meaning. But unlike setTimeout it runs the function not only once, but regularly after the given interval of time.
-
-To stop further calls, we should call clearInterval(timerId).
-
-The following example will show the message every 2 seconds. After 5 seconds, the output is stopped:
-</pre>
-<pre class="two">
-
-  // repeat with the interval of 2 seconds
-  let timerId = setInterval(() => alert('tick'), 2000);
-
-  // after 5 seconds stop
-  setTimeout(() => { clearInterval(timerId); alert('stop'); }, 5000);
-
-  <button onclick="myFunctionF()">Click me</button>
-
-</pre>
-<script>
-  function myFunctionF(){
-    // repeat with the interval of 2 seconds
-    let timerId = setInterval(() => alert('tick'), 2000);
-
-    // after 5 seconds stop
-    setTimeout(() => { clearInterval(timerId); alert('stop'); }, 5000);
-  }  
-</script>
-<pre class="one">
-
-  <h2>Nested setTimeout</h2>
-  There are two ways of running something regularly.
-
-  One is setInterval. The other one is a nested setTimeout, like this:
-</pre>
-<pre class="two">
-
-  /** instead of:
-  let timerId = setInterval(() => alert('tick'), 2000);
-  */
-
-  let timerId = setTimeout(function tick() {
-    alert('tick');
-    timerId = setTimeout(tick, 2000); // (*)
-  }, 2000);
-
-</pre>
-<pre class="one">
-The setTimeout above schedules the next call right at the end of the current one (*).
-
-The nested setTimeout is a more flexible method than setInterval. This way the next call may be scheduled differently, depending on the results of the current one.
-
-For instance, we need to write a service that sends a request to the server every 5 seconds asking for data, but in case the server is overloaded, it should increase the interval to 10, 20, 40 seconds…
-
-Here’s the pseudocode:
-</pre>
-<pre class="two">
-
-  let delay = 5000;
-
-  let timerId = setTimeout(function request() {
-    ...send request...
-
-    if (request failed due to server overload) {
-      // increase the interval to the next run
-      delay *= 2;
-    }
-
-    timerId = setTimeout(request, delay);
-
-  }, delay);
-
-</pre>
-<pre class="one">
-And if the functions that we’re scheduling are CPU-hungry, then we can measure the time taken by the execution and plan the next call sooner or later.
-
-Nested setTimeout allows to set the delay between the executions more precisely than setInterval.
-
-Let’s compare two code fragments. The first one uses setInterval:
-</pre>
-<pre class="two">
-
-  let i = 1;
-  setInterval(function() {
-    func(i++);
-  }, 100);
-
-</pre>  
-<pre class="one">
-  The second one uses nested setTimeout:
-</pre>
-<pre class="two">
-
-  let i = 1;
-  setTimeout(function run() {
-    func(i++);
-    setTimeout(run, 100);
-  }, 100);
-
-</pre>
-<pre class="one">
-
-<h2>Zero delay setTimeout</h2>
-There’s a special use case: setTimeout(func, 0), or just setTimeout(func).
-
-This schedules the execution of func as soon as possible. But the scheduler will invoke it only after the currently executing script is complete.
-
-So the function is scheduled to run “right after” the current script.
-
-For instance, this outputs “Hello”, then immediately “World”:
-</pre>
-<pre class="two">
-
-  setTimeout(() => alert("World"));
-
-  alert("Hello");
-
-  <button onclick="myFunctionG()">Click me</button>
-
-</pre>
-<script>
-  function myFunctionG(){
-    setTimeout(() => alert("World"));
-
-    alert("Hello");
-  }
-</script>
-<pre class="one">
-The first line “puts the call into calendar after 0ms”. But the scheduler will only “check the calendar” after the current script is complete, so "Hello" is first, and "World" – after it.
-
-There are also advanced browser-related use cases of zero-delay timeout, that we’ll discuss in the chapter Event loop: microtasks and macrotasks.
-
-Zero delay is in fact not zero (in a browser)
-In the browser, there’s a limitation of how often nested timers can run. The HTML Living Standard says: “after five nested timers, the interval is forced to be at least 4 milliseconds.”.
-
-Let’s demonstrate what it means with the example below. The setTimeout call in it re-schedules itself with zero delay. Each call remembers the real time from the previous one in the times array. What do the real delays look like? Let’s see:
-</pre>
-<pre class="two">
-
-  let start = Date.now();
-  let times = [];
-
-  setTimeout(function run() {
-    times.push(Date.now() - start); // remember delay from the previous call
-
-    if (start + 100 < Date.now()) alert(times); // show the delays after 100ms
-    else setTimeout(run); // else re-schedule
-  });
-
-  // an example of the output:
-  // 1,1,1,1,9,15,20,24,30,35,40,45,50,55,59,64,70,75,80,85,90,95,100
-
-  <button onclick="myFunctionH()">Click me</button>
-
-</pre>
-<script>
-  function myFunctionH(){
-    let start = Date.now();
-    let times = [];
+    export {sayHi, sayBye}; // a list of exported variables</code>
+  </pre>
+  <br>
+  <pre class="one">
+  <h2>Import *</h2>
+  Usually, we put a list of what to import in curly braces <code>import {...}</code>, like this:
+  But if there’s a lot to import, we can import everything as an object using <code>import * as &lt;obj&gt;</code>, for instance:
+  </pre>
+  <pre class="two">
+    <code>
+  // 📁 main.js
+  import {sayHi, sayBye} from './say.js';
   
-    setTimeout(function run() {
-      times.push(Date.now() - start); // remember delay from the previous call
+  sayHi('John'); // Hello, John!
+  sayBye('John'); // Bye, John!
+  // 📁 main.js
+  import * as say from './say.js';
+  
+  say.sayHi('John');
+  say.sayBye('John');</code>
+    </pre>
+    <br>
+    <pre class="one">
+  At first sight, “import everything” seems such a cool thing, short to write, why should we ever
+  explicitly list what we need to import?
+  Well, there are few reasons.
 
-      if (start + 100 < Date.now()) alert(times); // show the delays after 100ms
-      else setTimeout(run); // else re-schedule
-    });
+  Explicitly listing what to import gives shorter names: <code>sayHi()</code> instead of
+  <code>say.sayHi()</code>.
+  Explicit list of imports gives better overview of the code structure: what is used and where. It
+  makes code support and refactoring easier.
+  <h2>Import “as”</h2>
+  We can also use <code>as</code> to import under different names.
+  For instance, let’s import <code>sayHi</code> into the local variable <code>hi</code> for brevity,
+  and import <code>sayBye</code> as <code>bye</code>:
+</pre>
+<pre class="two">
+    <code>
+      // 📁 main.js
+      import {sayHi as hi, sayBye as bye} from './say.js';
+      
+      hi('John'); // Hello, John!
+      bye('John'); // Bye, John!</code>
+  </pre>
+  <br>
+  <pre class="one">
+  <h2>Export “as”</h2>
+  The similar syntax exists for <code>export</code>.
+  Let’s export functions as <code>hi</code> and <code>bye</code>:
+  Now <code>hi</code> and <code>bye</code> are official names for outsiders, to be used in imports:
+</pre>
+<pre class="two">
+  <code>
+    // 📁 say.js
+  ...
+  export {sayHi as hi, sayBye as bye};
 
-    // an example of the output:
-    // 1,1,1,1,9,15,20,24,30,35,40,45,50,55,59,64,70,75,80,85,90,95,100
-}
-</script>
+  // 📁 main.js
+  import * as say from './say.js';
+
+  say.hi('John'); // Hello, John!
+  say.bye('John'); // Bye, John!
+</code>
+</pre>
 <pre class="one">
-First timers run immediately (just as written in the spec), and then we see 9, 15, 20, 24.... The 4+ ms obligatory delay between invocations comes into play.
+  <h2>Export default</h2>
+  In practice, there are mainly two kinds of modules.
+  
+  Modules that contain a library, pack of functions, like <code>say.js</code> above.
+  Modules that declare a single entity, e.g. a module <code>user.js</code> exports only
+  <code>class User</code>.
 
-The similar thing happens if we use setInterval instead of setTimeout: setInterval(f) runs f few times with zero-delay, and afterwards with 4+ ms delay.
+  Mostly, the second approach is preferred, so that every “thing” resides in its own module.
+  Naturally, that requires a lot of files, as everything wants its own module, but that’s not a problem
+  at all. Actually, code navigation becomes easier if files are well-named and structured into folders.
+  
+  Modules provide a special <code>export default</code> (“the default export”) syntax to make the “one
+  thing per module” way look better.
+  Put <code>export default</code> before the entity to export:
 
-That limitation comes from ancient times and many scripts rely on it, so it exists for historical reasons.
-
-For server-side JavaScript, that limitation does not exist, and there exist other ways to schedule an immediate asynchronous job, like setImmediate for Node.js. So this note is browser-specific.
-</pre>  
+  There may be only one <code>export default</code> per file.
+  …And then import it without curly braces:
+</pre>
+<pre class="two">
+  <code>
+  // 📁 user.js
+  export default class User { // just add &quot;default&quot;
+    constructor(name) {
+      this.name = name;
+    }
+  }
+  
+  // 📁 main.js
+  import User from './user.js'; // not {User}, just User
+  
+  new User('John');
+</code>
+</pre>
+<br>
+<pre class="one">
+  Imports without curly braces look nicer. A common mistake when starting to use modules is to forget
+  curly braces at all. So, remember, <code>import</code> needs curly braces for named exports and
+  doesn’t need them for the default one.
+</pre>
 <br>
 </body>
-
 </html>
