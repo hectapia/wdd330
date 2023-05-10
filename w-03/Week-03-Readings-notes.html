@@ -316,7 +316,9 @@ The Web Audio and HTMLMediaElement APIs are subject to a security mechanism call
 </pre>
 <br>
 <pre class="one">
+
 <h1><code>setTimeout and setInterval</code></h1>
+
 We may decide to execute a function not right now, but at a certain time later. That’s called “scheduling a call”.
 
 There are two methods for it:
@@ -353,7 +355,18 @@ For instance, this code calls sayHi() after one second:
 
   setTimeout(sayHi, 1000);
 
+  <button onclick="myFunctionA()">Click me</button>
+
 </pre>
+<script> 
+  function myFunctionA() {
+    function sayHi() {
+      alert('Hello');
+    }
+
+    setTimeout(sayHi, 1000);
+  }
+</script>
 <pre class="one">
 With arguments:
 </pre>
@@ -365,7 +378,18 @@ With arguments:
 
   setTimeout(sayHi, 1000, "Hello", "John"); // Hello, John
 
+  <button onclick="myFunctionB()">Click me</button>
+
 </pre>
+<script>
+  function myFunctionB() {
+    function sayHi(phrase, who) {
+      alert( phrase + ', ' + who );
+    }
+
+    setTimeout(sayHi, 1000, "Hello", "John"); // Hello, John
+  }
+</script>
 <pre class="one">
 If the first argument is a string, then JavaScript creates a function from it.
 
@@ -375,15 +399,29 @@ So, this will also work:
 
   setTimeout("alert('Hello')", 1000);
 
+  <button onclick="myFunctionC()">Click me</button>
+
 </pre>
+<script>
+  function myFunctionC() {
+    setTimeout("alert('Hello')", 1000);
+  }
+</script>
 <pre class="one">
 But using strings is not recommended, use arrow functions instead of them, like this:
 </pre>
 <pre class="two">
 
   setTimeout(() => alert('Hello'), 1000);
-  Pass a function, but don’t run it
+
+  <button onclick="myFunctionD()">Click me</button>
+
 </pre>
+<script>
+  function myFunctionD(){
+    setTimeout(() => alert('Hello'), 1000);
+  }  
+</script>
 <pre class="one">
 <h2>Canceling with clearTimeout</h2>
 A call to setTimeout returns a “timer identifier” timerId that we can use to cancel the execution.
@@ -407,7 +445,18 @@ In the code below, we schedule the function and then cancel it (changed our mind
   clearTimeout(timerId);
   alert(timerId); // same identifier (doesn't become null after canceling)
 
+  <button onclick="myFunctionE()">Click me</button>
+
 </pre>
+<script>
+  function myFunctionE(){
+    let timerId = setTimeout(() => alert("never happens"), 1000);
+    alert(timerId); // timer identifier
+
+    clearTimeout(timerId);
+    alert(timerId); // same identifier (doesn't become null after canceling)
+  }
+</script>
 <pre class="one">
 As we can see from alert output, in a browser the timer identifier is a number. In other environments, this can be something else. For instance, Node.js returns a timer object with additional methods.
 
@@ -432,13 +481,24 @@ The following example will show the message every 2 seconds. After 5 seconds, th
 </pre>
 <pre class="two">
 
-// repeat with the interval of 2 seconds
-let timerId = setInterval(() => alert('tick'), 2000);
+  // repeat with the interval of 2 seconds
+  let timerId = setInterval(() => alert('tick'), 2000);
 
-// after 5 seconds stop
-setTimeout(() => { clearInterval(timerId); alert('stop'); }, 5000);
+  // after 5 seconds stop
+  setTimeout(() => { clearInterval(timerId); alert('stop'); }, 5000);
+
+  <button onclick="myFunctionF()">Click me</button>
 
 </pre>
+<script>
+  function myFunctionF(){
+    // repeat with the interval of 2 seconds
+    let timerId = setInterval(() => alert('tick'), 2000);
+
+    // after 5 seconds stop
+    setTimeout(() => { clearInterval(timerId); alert('stop'); }, 5000);
+  }  
+</script>
 <pre class="one">
 
   <h2>Nested setTimeout</h2>
@@ -528,7 +588,16 @@ For instance, this outputs “Hello”, then immediately “World”:
 
   alert("Hello");
 
+  <button onclick="myFunctionG()">Click me</button>
+
 </pre>
+<script>
+  function myFunctionG(){
+    setTimeout(() => alert("World"));
+
+    alert("Hello");
+  }
+</script>
 <pre class="one">
 The first line “puts the call into calendar after 0ms”. But the scheduler will only “check the calendar” after the current script is complete, so "Hello" is first, and "World" – after it.
 
@@ -541,8 +610,8 @@ Let’s demonstrate what it means with the example below. The setTimeout call in
 </pre>
 <pre class="two">
 
-let start = Date.now();
-let times = [];
+  let start = Date.now();
+  let times = [];
 
   setTimeout(function run() {
     times.push(Date.now() - start); // remember delay from the previous call
@@ -554,7 +623,25 @@ let times = [];
   // an example of the output:
   // 1,1,1,1,9,15,20,24,30,35,40,45,50,55,59,64,70,75,80,85,90,95,100
 
+  <button onclick="myFunctionH()">Click me</button>
+
 </pre>
+<script>
+  function myFunctionH(){
+    let start = Date.now();
+    let times = [];
+  
+    setTimeout(function run() {
+      times.push(Date.now() - start); // remember delay from the previous call
+
+      if (start + 100 < Date.now()) alert(times); // show the delays after 100ms
+      else setTimeout(run); // else re-schedule
+    });
+
+    // an example of the output:
+    // 1,1,1,1,9,15,20,24,30,35,40,45,50,55,59,64,70,75,80,85,90,95,100
+}
+</script>
 <pre class="one">
 First timers run immediately (just as written in the spec), and then we see 9, 15, 20, 24.... The 4+ ms obligatory delay between invocations comes into play.
 
