@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Enhancement 2 | Web Backend Development I</title>
+  <meta name="description" content="CSE 340 Enhancement 1 directions">
+  <meta name="viewport" content="width=device-width">
+
+
+  <style>
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+    
+    img, video {
+        max-width: 100%;
+        height: auto;
+    }
+
+pre[class*=language-]>code {
+    position: relative;
+    border-left: 10px solid #38761d;
+    box-shadow: -1px 0 0 0 #38761d,0 0 0 1px #dfdfdf;
+    background-color: #fdfdfd;
+    background-image: linear-gradient(transparent 50%,rgba(58,117,36,.1) 50%);
+    background-size: 3em 3em;
+    background-origin: content-box;
+    background-attachment: local;
+}
+
+code[class*=language] {
+    max-height: inherit;
+    padding: 0 1em;
+    display: block;
+    overflow: auto;
+}
+
+code[class*=language-], pre[class*=language-] {
+    color: #000;
+    background: 0 0;
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+code, kbd, samp {
+    font-family: monospace,monospace;
+    font-size: 1em;
+}
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <header id="header"></header>
+    <main>
+      <h1>Enhancement 3 <br> CSE 340 Web Backend Development I</h1>
+      <h2>Purpose</h2>
+      <p>This enhancement combines skills to build a system into the phpmotors web 
+        site that can deliver both a registration and login view to a site visitor when the "My Account"
+        link in the page header on the PHP Motors site is clicked. This process will require use of the 
+        Model - View - Control architecture.</p>
+
+      <h2>This enhancement contains:</h2>
+      <ol>
+        <li>A function and code to create a dynamic navigation bar. 
+          <ul>
+            <li>
+            To use the model we have two files that must be brought into the scope of the controller.
+            </li>
+            <li>
+            The two files are the connections.php file and the main-model.php file.
+            </li>
+            <li>
+            These files must be brought into scope in that order because:
+              <ul>
+                <li>
+                The connections file contains all of the functions for talking to the database server. Without this file the model cannot do it's job.
+                </li>
+                <li>
+                The main-model is needed to get the data from the database which the controller will use to build the dynamic navigation menu.
+                </li>
+              </ul>
+            </li>
+          </ul>  
+        </li>
+        <li>A new folder for storing a controller. <br>
+          The phpmotors template uses the "<b>$navList</b>" variable to provide the navigation bar.
+        </li>
+        <li>Two new php pages (views), one will contain a login form and the other will contain a registration form.</li>
+            <ul>
+              <li>The phpmotors template was used to build a login view and stored it into the "view" folder. 
+                The form will require the user to supply:
+                <ul>
+                  <li>Email address</li>
+                  <li>Password</li>
+                </ul>
+              </li>
+            </ul>
+            <ul>
+              <li>The phpmotors template was used to build a registration view and stored it into the "view" folder. The view 
+                contains a form that collects the following information from a site visitor:
+                <br>
+                <ul>
+                  <li>First name</li>
+                  <li>Last name</li>
+                  <li>Email address</li>
+                  <li>A password</li>
+                </ul>
+                <p><mark>Placeholders were used to ensure that the registrant understands that all fields are required.</mark>, 
+                  <p>HTML5 and usability standards were used to build the view and form. I'm going to test this easily using
+                    the <a href="https://wave.webaim.org/" target="_blank" title="Go to the Wave tool site and download the extension">WAVE tool</a>.</p>
+                  <p>CSS was used to style the form for professional appearance and usability.</p>
+                  <p><strong>The form DOES NOT NEED TO ACTUALLY LOGIN AN INDIVIDUAL for this enhancement</strong>.</p>
+              </li>
+            </ul>
+        <li>Both views will meet the standards found in the <a href="https://blainerobertson.github.io/340br/phpmotors/views/dev-checklist.html" title="Open the frontend checklist in a new tab" target="_blank">Frontend Checklist</a>.
+          <p>To keep data coming from the browser, which is stored in
+            variables, and finally inserted into the database directly, I will use a simple
+            and useful practice: use the database field name for the same piece of data in all its locations.
+          </p>
+        </li>
+        <li>Alter the header module to add a link for "My Account"
+          <ul>
+            <li>A link was created in the header code snippet module for the "My Account" item. By doing it here, the link should
+              appear in the phpmotors template and all existing views (home, login, 500 error and registration).
+            </li>
+            <li>The link point to the "<b>accounts</b>" controller and send a name-value pair
+              as a parameter that tells the controller to deliver
+              the login view.
+            </li>
+          </ul>
+        </li>
+        <li>Create a controller with logic to deliver the correct view based on the incoming request
+          <ul>
+            <li>The existing switch case statement in the accounts controller was altered to react to the "login" request and
+              deliver the login view from the <b>view</b> folder using an "include".</li>
+            <li>The login view contains a link that tells the client to click it
+              if they have not yet registered and need to create an account. The link:
+              <ul>
+                <li>point to the "accounts" controller and</li>
+                <li>pass a name - value pair that tells the controller to deliver the registration view.</li>
+              </ul>
+              <p>The link is obvious so that it is not overlooked and causes a site visitor confusion.
+              </p>
+            </li>
+            <li>Additional case statements were added to the "accounts" controller to detect the request for the registration
+              view and deliver it to the browser from the <b>view</b> folder.</li>
+            <li><mark>The default statement in the accounts controller should remain empty for now.</mark></li>
+          </ul>  
+        </li>
+      </ol>
+    </main>
+  </div>
+</body>
