@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WDD 330 | Week 06 Readings notes</title>
+  <style>
+    body {
+      font: 14px/20px BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      color: #313130;
+      background: #fff;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+
+    .one {
+      color: #2d3b45;
+      display: block;
+      padding: 2px;
+      margin: 0 0 2px;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    .two {
+      font-size: .75rem;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+      border: 1px solid #c7cdd1;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 2px;
+      padding: 2px;
+      font-size: large;
+    }
+
+    code {
+      font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      background: #f7f4f3;
+      border-radius: 2px;
+      color: #716f6e;
+    }
+  </style>
+</head>
+
+<body>
+  <br>
+  <div class="alert"> <strong>
+      Hector Olivares Tapia |
+      Brigham Young University-Idaho |
+      WDD 330 Web Frontend Development II |
+      Week 06: Readings notes|
+      Instructor Johan Baer |
+      Jun 5, 2023</strong>
+  </div>
+  <br>
+<pre class="one">
+     
+        <a href="https://javascript.info/form-elements" target="_blank" rel="noreferrer">4.1 Form properties and methods</a>
+        <a href="https://javascript.info/forms-submit" target="_blank" rel="noreferrer">4.4 Forms:Event and method submit</a>
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation" target="_blank" rel="noreferrer">MDN: Client-Side Form Validation</a>
+</pre>
+  <br>
+<pre class="one">
+<h2>4.1 Form properties and methods</h2>
+<p>The page explains how to access and manipulate form elements and controls using JavaScript. It covers the following topics:
+Navigation: form and elements: how to use document.forms and form.elements collections to get references to forms and their elements by name or index.
+Fieldsets as “subforms”: how to use fieldset.elements property to access elements inside a fieldset element.
+Shorter notation: form.name: how to use form[name] as a shorthand for form.elements[name], but with some caveats.
+Backreference: 
+<img src="formBackreference.png" alt="Backreference: element.form">
+element.form: how to use element.form property to get the reference to the parent form of an element.
+Focusing: focus/blur: how to use focus() and blur() methods to set or remove focus from an element, and how to handle focus and blur events.
+Events: change, input, cut, copy, paste: how to use change and input events to track changes in input values, and how to use cut, copy and paste events to handle clipboard operations.
+Forms: event and method submit: how to use submit event and submit() method to handle form submission, and how to prevent the default browser behavior using event.preventDefault().
+<a href="https://javascript.info/form-elements" target="_blank">The page</a> also provides some examples and exercises to practice working with forms and controls.</p>
+</pre>
+
+<pre class="two">
+  <code>
+    &lt;select id="genres"&gt;>
+      &lt;option value="rock">Rock&lt;/option&gt;
+      &lt;option value="blues" selected>Blues&lt;/option&gt;
+    &lt;/select&gt;
+  
+    &lt;script&gt;
+      let newOption = new Option("Classic", "classic");
+      genres.append(newOption);
+      newOption.selected = true;
+    &lt;/script&gt;
+  </code>
+</pre>
+<pre class="alert">
+  <select id="genres">
+    <option value="rock">Rock</option>
+    <option value="blues" selected>Blues</option>
+  </select>
+  
+  <script>
+    let newOption = new Option("Classic", "classic");
+    genres.append(newOption);
+    newOption.selected = true;
+  </script>
+</pre>
+ <br>
+ <pre class="one">
+  <h2>4.4 Forms:Event and method submit</h2>
+<p>The article explains how to submit a form using JavaScript, either by triggering the <strong>submit event</strong> or by calling the <strong>form.submit() method</strong>.
+The submit event occurs when the user clicks on an <strong>input type=“submit”</strong> or an <strong>input type=“image”</strong>, or presses <strong>Enter</strong> on an input field<a href="https://javascript.info/forms-submit" class="ac-anchor sup-target" target="_blank" data-citationid="29ceab30-bb84-8642-1284-4a7cd4b0514c-12" aria-label="Forms: event and method submit - The Modern JavaScript Tutorial" h="ID=SERP,5026.1"><sup>1</sup></a>. <a class="tooltip-target" data-citationid="29ceab30-bb84-8642-1284-4a7cd4b0514c-14-group" h="ID=SERP,5026.1">The event handler can validate the form data and prevent the submission if there are errors</a>.
+The form.submit() method allows to initiate the form sending from JavaScript, without generating the submit event<a href="https://javascript.info/forms-submit" class="ac-anchor sup-target" target="_blank" data-citationid="29ceab30-bb84-8642-1284-4a7cd4b0514c-17" aria-label="Forms: event and method submit - The Modern JavaScript Tutorial" h="ID=SERP,5026.1"><sup>1</sup></a>. <a class="tooltip-target" data-citationid="29ceab30-bb84-8642-1284-4a7cd4b0514c-19-group" h="ID=SERP,5026.1">This can be used to create and send custom forms to the server</a><a href="https://javascript.info/forms-submit" class="ac-anchor sup-target" target="_blank" data-citationid="29ceab30-bb84-8642-1284-4a7cd4b0514c-19" aria-label="Forms: event and method submit - The Modern JavaScript Tutorial" h="ID=SERP,5026.1"><sup>1</sup></a>.
+The article also provides some examples and tasks to practice working with forms in JavaScript.</p>
+</pre>
+<pre class="two">
+  <code>
+  let form = document.createElement('form');
+  form.action = 'https://google.com/search';
+  form.method = 'GET';
+  
+  form.innerHTML = '&lt;input name="q" value="test"&gt;';
+  
+  // the form must be in the document to submit it
+  document.body.append(form);
+  
+  form.submit();
+</code>
+  <button onclick="myFunctionD()">Click me</button>
+<script>
+  function myFunctionD(){
+    let form = document.createElement('form');
+    form.action = 'https://google.com/search';
+    form.method = 'GET';
+    
+    form.innerHTML = '<input name="q" value="test">';
+    
+    // the form must be in the document to submit it
+    document.body.append(form);
+    
+    form.submit();
+  } 
+</script>
+</pre>
+ <br> 
+ <pre class="one">
+  <h2>MDN: Client-Side Form Validation</h2>
+<p>Why form validation is important and what are the benefits of client-side validation.
+How to use HTML attributes such as <strong>required</strong>, <strong>pattern</strong>, <strong>minlength</strong>, <strong>maxlength</strong>, etc. to specify validation rules for different input types<a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation" class="ac-anchor sup-target" target="_blank" data-citationid="22aeccf5-75d8-6b19-5240-4b2d450c7c95-17" aria-label="Client-side form validation - Learn web development | MDN - MDN Web Docs" h="ID=SERP,5026.1"><sup>1</sup></a>.
+How to use CSS pseudo-classes such as <strong>:valid</strong> and <strong>:invalid</strong> to style valid and invalid form controls.
+How to use JavaScript to access the <strong>ValidityState</strong> object of each form control and check its validity properties.
+How to use JavaScript to display custom error messages using the <strong>setCustomValidity()</strong> method and the <strong>invalid</strong> event.
+How to implement custom validation for complex cases such as password confirmation, email domains, etc.</p>
+</pre>
+<pre class="two">
+  <code>
+    &lt;form&gt;
+      &lt;p&gt;
+        &lt;fieldset&gt;
+          &lt;legend&gt;Do you have a driver's license?&lt;span aria-label="required"&gt;*&lt;/span&gt;&lt;/legend&gt;
+
+          &lt;input type="radio" required name="driver" id="r1" value="yes"&gt;&lt;label for="r1"&gt;Yes&lt;/label&gt;
+          &lt;input type="radio" required name="driver" id="r2" value="no"&gt;&lt;label for="r2"&gt;No&lt;/label&gt;
+        &lt;/fieldset&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for="n1"&gt;How old are you?&lt;/label&gt;
+        &lt;input type="number" min="12" max="120" step="1" id="n1" name="age"
+               pattern="\d+"&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for="t1"&gt;What's your favorite fruit?&lt;span aria-label="required"&gt;*&lt;/span&gt;&lt;/label&gt;
+        &lt;input type="text" id="t1" name="fruit" list="l1" required
+               pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range"&gt;
+        &lt;datalist id="l1"&gt;
+          &lt;option&gt;Banana&lt;/option&gt;
+          &lt;option&gt;Cherry&lt;/option&gt;
+          &lt;option&gt;Apple&lt;/option&gt;
+          &lt;option&gt;Strawberry&lt;/option&gt;
+          &lt;option&gt;Lemon&lt;/option&gt;
+          &lt;option&gt;Orange&lt;/option&gt;
+        &lt;/datalist&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for="t2"&gt;What's your email address?&lt;/label&gt;
+        &lt;input type="email" id="t2" name="email"&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for="t3"&gt;Leave a short message&lt;/label&gt;
+        &lt;textarea id="t3" name="msg" maxlength="140" rows="5"&gt;&lt;/textarea&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;button&gt;Submit&lt;/button&gt;
+      &lt;/p&gt;
+    &lt;/form&gt;
+  </code>
+</pre>
+<div class="alert">
+  <form>
+    <p>
+      <fieldset>
+        <legend>Do you have a driver's license?<span aria-label="required">*</span></legend>
+
+        <input type="radio" required name="driver" id="r1" value="yes"><label for="r1">Yes</label>
+        <input type="radio" required name="driver" id="r2" value="no"><label for="r2">No</label>
+      </fieldset>
+    </p>
+    <p>
+      <label for="n1">How old are you?</label>
+      <input type="number" min="12" max="120" step="1" id="n1" name="age"
+             pattern="\d+">
+    </p>
+    <p>
+      <label for="t1">What's your favorite fruit?<span aria-label="required">*</span></label>
+      <input type="text" id="t1" name="fruit" list="l1" required
+             pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range">
+      <datalist id="l1">
+        <option>Banana</option>
+        <option>Cherry</option>
+        <option>Apple</option>
+        <option>Strawberry</option>
+        <option>Lemon</option>
+        <option>Orange</option>
+      </datalist>
+    </p>
+    <p>
+      <label for="t2">What's your email address?</label>
+      <input type="email" id="t2" name="email">
+    </p>
+    <p>
+      <label for="t3">Leave a short message</label> <br>
+      <textarea id="t3" name="msg" maxlength="140" rows="5"></textarea>
+    </p>
+    <p>
+      <button>Submit</button>
+    </p>
+  </form>
+</div>  
+ <br> 
+</body>
+</html>
