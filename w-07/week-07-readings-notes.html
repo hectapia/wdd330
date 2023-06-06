@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WDD 330 | Week 07 Readings notes</title>
+  <style>
+    body {
+      font: 14px/20px BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      color: #313130;
+      background: #fff;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+
+    .one {
+      color: #2d3b45;
+      display: block;
+      padding: 2px;
+      margin: 0 0 2px;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    .two {
+      font-size: .75rem;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+      border: 1px solid #c7cdd1;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 2px;
+      padding: 2px;
+      font-size: large;
+    }
+
+    code {
+      font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      background: #f7f4f3;
+      border-radius: 2px;
+      color: #716f6e;
+    }
+
+    #digit {
+    width: .5em;
+    overflow: hidden;
+    font: 32px monospace;
+    cursor: pointer;
+  }
+
+  #stripe {
+    display: inline-block
+  }
+
+  #stripe.animate {
+    transform: translate(-90%);
+    transition-property: transform;
+    transition-duration: 9s;
+    transition-timing-function: steps(9, end);
+  }
+
+  @keyframes go-left-right {        /* give it a name: "go-left-right" */
+    from { left: 0px; }             /* animate from left: 0px */
+    to { left: calc(100% - 50px); } /* animate to left: 100%-50px */
+  }
+
+  .progress {
+    animation: go-left-right 3s infinite alternate;
+    /* apply the animation "go-left-right" to the element
+       duration 3 seconds
+       number of times: infinite
+       alternate direction every time
+    */
+
+    position: relative;
+    border: 2px solid green;
+    width: 50px;
+    height: 20px;
+    background: lime;
+  }
+  </style>
+</head>
+
+<body>
+  <br>
+  <div class="alert"> <strong>
+      Hector Olivares Tapia |
+      Brigham Young University-Idaho |
+      WDD 330 Web Frontend Development II |
+      Week 07: Readings notes|
+      Instructor Johan Baer |
+      Jun 5, 2023</strong>
+  </div>
+  <br>
+<pre class="one">
+     
+        <a href="https://javascript.info/object-methods" target="_blank" rel="noreferrer">4.4 Object Methods, <strong>This</strong></a>
+        <a href="https://zellwk.com/blog/this/" target="_blank" rel="noreferrer"><strong>This</strong> in JavaScript</a>
+        <a href="https://javascript.info/css-animations" target="_blank" rel="noreferrer">5.2 <strong>CSS Animation</strong></a>
+</pre>
+  <br>
+<pre class="one">
+<h2>Object Methods, This</h2>
+<p>The web page explains how to use <strong>object methods</strong> in JavaScript, which 
+are functions that are stored as properties of an object. Object methods can access the 
+object data using the <strong>this</strong> keyword, which refers to the current object. 
+The web page also shows how to use <strong>method shorthand</strong> syntax, which is a 
+shorter way to write object methods. The web page provides some examples of object methods 
+and how they work with different types of property names and values. 
+<a href="https://javascript.info/object-methods" target="_blank">The web page</a> is part of a tutorial on modern JavaScript.</p>
+</pre>
+<pre class="two">
+  <code>
+    let calculator = {
+      sum() {
+        return this.a + this.b;
+      },
+    
+      mul() {
+        return this.a * this.b;
+      },
+    
+      read() {
+        this.a = +prompt('a?', 0);
+        this.b = +prompt('b?', 0);
+      }
+    };
+    
+    calculator.read();
+    alert( calculator.sum() );
+    alert( calculator.mul() );
+  </code>
+  <button onclick="myFunctionD()">Click me</button>
+  <script>
+    function myFunctionD(){
+      let calculator = {
+  sum() {
+    return this.a + this.b;
+  },
+
+  mul() {
+    return this.a * this.b;
+  },
+
+  read() {
+    this.a = +prompt('a?', 0);
+    this.b = +prompt('b?', 0);
+  }
+};
+
+calculator.read();
+alert(`sum ${calculator.sum()}`);
+alert(`poduct ${calculator.mul()}`);
+    }
+  </script>
+</pre>
+ <br>
+ <pre class="one">
+  <h2>This in JavaScript</h2>
+The web page explains how the <strong>this</strong> keyword works in JavaScript, which is a common source of confusion for many developers. The web page shows that the value of <strong>this</strong> depends on how a function is called, and there are six different contexts where <strong>this</strong> can take on different values. They are:
+<strong>this</strong> in global context: <strong>this</strong> refers to the <strong>Window</strong> object in the browser.
+<strong>this</strong> in object construction: <strong>this</strong> refers to the new instance of the object created with the <strong>new</strong> keyword.
+<strong>this</strong> in an object method: <strong>this</strong> refers to the object itself, which allows accessing its properties and methods.
+<strong>this</strong> in a simple function: <strong>this</strong> refers to the global object (<strong>Window</strong>) by default, but can be changed with methods like <strong>call</strong>, <strong>apply</strong>, and <strong>bind</strong>.
+<strong>this</strong> in an arrow function: <strong>this</strong> refers to the same value as the enclosing scope, which is determined by where the arrow function is defined, not where it is called.
+<strong>this</strong> in an event listener: <strong>this</strong> refers to the element that received the event, unless the listener is an arrow function or bound to a different object.
+<a href="https://zellwk.com/blog/this/" target="_blank">The web page</a> provides examples to illustrate how <strong>this</strong> works in each context, and also gives some tips and best practices on how to use <strong>this</strong>correctly and avoid common pitfalls.</p>
+</pre>
+ <br> 
+ <pre class="one">
+  <h2>5.2 CSS Animation</h2>
+<p>The web page explains how to use <strong>CSS animations</strong> to create simple and smooth transitions for HTML elements. The web page covers the following topics:
+<strong>CSS transitions</strong>: how to define a property and its duration for animation, and how to use different timing functions and delays.</p>
+</pre>
+<pre class="two">
+    <code>
+    Click below to animate:
+
+    &lt;div id="digit"&gt;&lt;div id="stripe"&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+  
+    &lt;script>
+      digit.onclick = function() {
+        stripe.classList.add('animate');
+      }
+      &lt;/script&gt;
+
+      &lt;style&gt;
+      #digit {
+        width: .5em;
+        overflow: hidden;
+        font: 32px monospace;
+        cursor: pointer;
+      }
+      
+      #stripe {
+        display: inline-block
+      }
+      
+      #stripe.animate {
+        transform: translate(-90%);
+        transition-property: transform;
+        transition-duration: 9s;
+        transition-timing-function: steps(9, start);
+      }
+      &lt;/style&gt;
+    </code>
+</pre>
+<div class="alert">
+  Click below to animate:
+  <div id="digit"><div id="stripe">0123456789</div></div>
+
+  <script>
+    digit.onclick = function() {
+      stripe.classList.add('animate');
+    }
+  </script>
+</div>
+<pre class="one">
+<p><strong>CSS @keyframes rule</strong>: how to specify intermediate steps for complex animations, and how to use animation properties like direction, iteration count, fill mode, etc.
+<a href="https://javascript.info/css-animations" target="_blank"><strong>JavaScript and CSS animations</strong></a> : how to control CSS animations with JavaScript, and how to use the <strong>transitionend</strong> and <strong>animationend</strong> events to detect when an animation finishes.</p>
+</pre>
+<pre class="two">
+  <code>
+    &lt;div class="progress"&gt;&lt;/div&gt;
+    &lt;style&gt;
+      @keyframes go-left-right {        /* give it a name: "go-left-right" */
+        from { left: 0px; }             /* animate from left: 0px */
+        to { left: calc(100% - 50px); } /* animate to left: 100%-50px */
+      }
+    
+      .progress {
+        animation: go-left-right 3s infinite alternate;
+        /* apply the animation "go-left-right" to the element
+           duration 3 seconds
+           number of times: infinite
+           alternate direction every time
+        */
+    
+        position: relative;
+        border: 2px solid green;
+        width: 50px;
+        height: 20px;
+        background: lime;
+      }
+      &lt;/style&gt;
+  </code>
+</pre>
+<div class="alert">
+  <div class="progress"></div>
+
+  <style>
+    @keyframes go-left-right {        /* give it a name: "go-left-right" */
+      from { left: 0px; }             /* animate from left: 0px */
+      to { left: calc(100% - 50px); } /* animate to left: 100%-50px */
+    }
+  
+    .progress {
+      animation: go-left-right 3s infinite alternate;
+      /* apply the animation "go-left-right" to the element
+         duration 3 seconds
+         number of times: infinite
+         alternate direction every time
+      */
+  
+      position: relative;
+      border: 2px solid rgb(0, 20, 0);
+      width: 50px;
+      height: 20px;
+      background: rgb(255, 251, 0);
+    }
+  </style>
+</div>
+ <br> 
+</body>
+</html>
