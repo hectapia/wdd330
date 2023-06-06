@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WDD 330 | Week 05 Readings notes</title>
+  <style>
+    body {
+      font: 14px/20px BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      color: #313130;
+      background: #fff;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+
+    .one {
+      color: #2d3b45;
+      display: block;
+      padding: 2px;
+      margin: 0 0 2px;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    .two {
+      font-size: .75rem;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+      border: 1px solid #c7cdd1;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 2px;
+      padding: 2px;
+      font-size: large;
+    }
+
+    code {
+      font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      background: #f7f4f3;
+      border-radius: 2px;
+      color: #716f6e;
+    }
+  </style>
+</head>
+
+<body>
+  <br>
+  <div class="alert"> <strong>
+      Hector Olivares Tapia |
+      Brigham Young University-Idaho |
+      WDD 330 Web Frontend Development II |
+      Week 05: Readings notes|
+      Instructor Johan Baer |
+      Jun 5, 2023</strong>
+  </div>
+  <br>
+<pre class="one">
+     
+        <a href="https://javascript.info/fetch" target="_blank" rel="noreferrer">3.1 Fetch</a>
+        <a href="https://javascript.info/fetch-crossorigin" target="_blank" rel="noreferrer">3.5 Fetch: Cross-Origin Requests</a>
+        <a href="https://javascript.info/rest-parameters-spread" target="_blank" rel="noreferrer">6.2 Rest parameters and spread syntax</a>
+        <a href="https://blog.pshrmn.com/how-single-page-applications-work/" target="_blank" rel="noreferrer">How Single-Page Applications Work</a>
+        <a href="https://gomakethings.com/the-problem-with-single-page-apps/" target="_blank" rel="noreferrer">The Problem with Single Page Apps</a>
+</pre>
+  <br>
+  <pre class="one">
+    <h2>3.1 Fetch</h2>
+<p>The article introduces the fetch() method, which is a modern and versatile way to make network requests from JavaScript.
+The basic syntax and usage of fetch(), which returns a promise that resolves with a Response object when the server responds with headers.
+How to access the response body in various formats, such as text, JSON, blob, etc., using different promise-based methods of the Response object.
+How to handle HTTP errors and network errors using the ok property and the promise rejection.
+How to specify optional parameters for fetch(), such as method, headers, body, etc., to customize the request.
+How to send a POST request with JSON data using fetch().
+How to upload a file using fetch() and a FormData object.
+How to track the progress of a fetch() request using Content-Length, Content-Type and response.body headers and a ReadableStream object.
+How to abort a fetch() request using an AbortController object.</p>
+</pre>
+
+   <br>  
+<pre class="one">
+  <h2>3.5 Fetch: Cross-Origin Requests</h2>
+<p>The article explains how to deal with cross-origin requests using fetch(), which are requests sent to another domain, protocol or port.
+The article covers the following topics:
+Why cross-origin requests are restricted by the browser for security reasons, and what is the CORS (Cross-Origin Resource Sharing) policy that allows them.
+How to use the mode option of fetch() to specify the type of cross-origin request: cors, no-cors or same-origin.
+How to use the Origin and Access-Control-Allow-Origin headers to indicate the origin of the request and the allowed origins of the response.
+How to handle preflight requests, which are extra requests with the OPTIONS method that are sent before some types of cross-origin requests to check permissions.
+How to use the credentials option of fetch() to specify whether cookies and HTTP-authentication should be sent with cross-origin requests: omit, same-origin or include.
+How to use the Access-Control-Allow-Credentials header to indicate whether cookies are allowed in cross-origin responses.</p>
+</pre>
+
+ <br>
+<pre class="one">
+  <h2>6.2 Rest parameters and spread syntax</h2>
+<p>The article explains how to use rest parameters and spread syntax in JavaScript functions.
+Rest parameters are used to create functions that accept any number of arguments. They are written as three dots … followed by the name of an array that will contain all the remaining arguments. For example:</p>
+</pre>
+<pre class="two">
+  <code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sumAll</span>(<span class="hljs-params">...args</span>) {
+    <span class="hljs-comment">// args is the name for the array</span>
+    <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> arg <span class="hljs-keyword">of</span> args) sum += arg;
+    <span class="hljs-keyword">return</span> sum;
+  }
+  </code>
+</pre>
+<pre class="one">
+<p>Spread syntax is used to pass an array to functions that normally require a list of many arguments. It is also written as three dots … followed by the array name. For example:</p>
+</pre>
+<pre class="two">
+    <code class="language-javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>];
+    <span class="hljs-title function_">alert</span>( <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(...arr) ); <span class="hljs-comment">// 5 (spread turns array into a list of arguments)</span>
+    </code>
+</pre>
+<pre class="one">
+Both features help to go between a list and an array of parameters with ease.
+The article also mentions the arguments object, which is an old way of accessing all arguments of a function. However, it has some drawbacks, such as not being a real array and not working with arrow functions. Therefore, rest parameters are preferred.
+</pre> 
+ <pre class="one">
+  <h2>How Single-Page Applications Work</h2>
+<p>The article explains how single-page applications (SPAs) work by using browser APIs and native features to re-render content without requesting new HTML from the server.
+SPAs can use state from an external source (the URL location) or track state internally. The article focuses on location-based SPAs, which can render different content based on the URL and allow users to share links to specific pages.
+Location primer: 
+<img src="url-parts.png" alt=""> 
+How to use window.location to access different parts of the URL, such as pathname, hash, and search (query string).
+Route matching: How to compare the current location against a router’s routes to find one that matches. Routes can be static or dynamic, and can use path-to-regexp package to create them.
+History API: How to use history.pushState and history.replaceState to change the URL without reloading the page, and history.state to store data associated with the current location.
+Popstate event: How to listen for popstate events that are triggered when the user navigates with the browser’s back and forward buttons, and update the content accordingly.
+Hashchange event: How to listen for hashchange events that are triggered when the URL’s hash changes, and update the content accordingly. This is useful for SPAs that use hash-based routing.</p>
+</pre>
+ <br> 
+<pre class="one">
+  <h2>The Problem with Single Page Apps</h2>
+<p>The article argues that single-page apps (SPAs) are over-complicated and fragile, and that they break many features that browsers provide out-of-the-box, such as routing, navigation, focus management, and accessibility.
+The article suggests using multi-page apps instead of SPAs, and letting the browser handle loading real HTML files located at the actual URLs. This way, the app can leverage the browser’s native behavior and avoid recreating it with JavaScript.
+The article shows how to use a unique selector in the markup (such as [data-app="lists"] or [data-app="settings"]) to determine which UI or layout to render based on the URL. It also shows how to use service workers to cache the HTML files and make the app work offline.</p>   
+</pre>
+<pre class="two">
+  examples
+</pre>
+ <br>  
+</body>
+
+</html>
