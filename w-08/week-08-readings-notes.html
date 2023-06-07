@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DD 330 | Week 08 Readings notes</title>
+  <style>
+    body {
+      font: 14px/20px BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      color: #313130;
+      background: #fff;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+
+    .one {
+      color: #2d3b45;
+      display: block;
+      padding: 2px;
+      margin: 0 0 2px;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    .two {
+      font-size: .75rem;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+      border: 1px solid #c7cdd1;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 2px;
+      padding: 2px;
+      font-size: large;
+    }
+
+    code {
+      font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      background: #f7f4f3;
+      border-radius: 2px;
+      color: #716f6e;
+    }
+  </style>
+</head>
+
+<body>
+  <br>
+  <div class="alert"> <strong>
+      Hector Olivares Tapia |
+      Brigham Young University-Idaho |
+      WDD 330 Web Frontend Development II |
+      Week 08: Readings notes|
+      Instructor Johan Baer |
+      Jun 5, 2023</strong>
+  </div>
+  <br>
+<pre class="one">
+     
+        <a href="https://auth0.com/learn/json-web-tokens/?_ga=2.184084847.834837117.1611866055-1405126930.1611866055" target="_blank" rel="noreferrer">Getting Started with JSON Web Tokens (JWT)</a>
+        <a href="https://www.youtube.com/watch?v=m4t7cLFksls" target="_blank" rel="noreferrer">Develop, Debug, Learn?</a>
+    
+</pre>
+  <br>
+<pre class="one">
+<h2>Getting Started with JSON Web Tokens (JWT)</h2>
+<p>The article is titled Get Started with JSON Web Tokens1. It is a tutorial that explains what JSON Web Tokens (JWTs) are, how they are structured, and how they can be used for authentication and information exchange.
+The article defines JWTs as compact and self-contained JSON objects that can be securely transmitted between parties. The article also states that JWTs can be verified and trusted because they are digitally signed using a secret or a public/private key pair.
+The article then describes the structure of a JWT, which consists of three parts separated by dots: header, payload, and signature. The article explains that the header contains the type of the token and the hashing algorithm, the payload contains the claims (statements about an entity or metadata), and the signature is calculated using the header, the payload, and the secret or key.
+The article also shows how to decode a base64url encoded JWT to read its information, and how to verify its signature using an online tool or a library. The article provides a diagram and some examples of JWTs and their decoded values.
+<br><img src="jwt-diagram.png" alt="JSON Web Tokens diagram" width="75%"><br>
+The article then discusses some scenarios where JWTs are useful, such as:
+Authentication: Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
+Single Sign On: JWTs can be used to implement SSO across different domains and systems, because they are small and can be easily used among them.
+Information Exchange: JWTs can be used to securely transmit information between parties, because they can be signed and verified.
+The article concludes by providing some links and resources for further learning about JWTs, such as a free ebook, a video course, and a playground.</p>
+</pre>
+<pre class="two">
+  <code>
+    // The header: type of the token, which is JWT, 
+    // and the hashing algorithm such as HMAC SHA256 or RSA.
+    {
+      'alg': 'HS256',
+      'typ': 'JWT'
+    }
+
+    //  Payload, which contains the claims reserved, public, or private 
+    {
+      'sub': '1234567890',
+      'name': 'John Doe',
+      'admin': true
+    }
+
+    // If you want to use the HMAC SHA256 algorithm, the Signature will be created
+    HMACSHA256(
+    base64UrlEncode(header) + '.' +
+    base64UrlEncode(payload),
+    secret)
+  </code>
+</pre>
+<pre class="one">
+  The following shows a JWT that has the previous header and payload encoded and it is signed with a secret.
+  <br><img src="encoded-jwt4.png" alt="encoded JSON Web Token" width="75%"><br>
+</pre>
+ <br>
+ <pre class="one">
+  <h2>Develop, Debug, Learn?</h2>
+<p>The video is titled Develop, Debug, Learn? A time to re-think our tooling. It is performed by Christian Heilmann, a developer advocate at Microsoft. The video argues that we need to change our approach to web development and debugging to be more empathetic and user-centric.
+The video starts by pointing out that we have a lot of tools and frameworks to help us code faster and more efficiently, but we often neglect the quality and usability of our final products. The video claims that we are too focused on our own preferences and workflows, and we forget about the needs and expectations of our end users and other developers.  
+The video then suggests some ways to improve our web development and debugging practices, such as:
+Using progressive enhancement to build for the lowest common denominator and then enhance for more capable browsers and devices.
+Testing our products on different browsers, devices, networks, and environments to ensure they work for everyone.
+Using browser developer tools to inspect and debug our code, as well as learn from other websites and web standards.
+Using VS Code as an integrated development environment that allows us to debug web projects end-to-end with a dedicated browser instance and access to browser developer tools inside the editor.
+Using Edge DevTools for VS Code extension to get more features and functionality from the Edge Developer Tools inside VS Code.
+Using launch.json files to automate the process of starting the browser and opening the localhost address for debugging.
+The video concludes by encouraging us to re-think our tooling and workflows to be more empathetic and user-centric, and to share our knowledge and feedback with others.</p>
+
+<h3>What about the problem of context switching?</h3>
+<p>What about the problem of context switching? As both Visual Studio Code and Edge are based on Chromium, we can do something about this. Using the the <a class="af nr" href="https://aka.ms/elements4code" rel="noopener ugc nofollow" target="_blank">Elements for VS Code</a> extension, you can embed the developer tools of the browser directly in the editor. The editor fires up an instance of the browser and hides it in the background. That way you can use both the editor and the visual tools in the same context.</p>
+</pre>
+ <br> 
+</body>
+</html>
