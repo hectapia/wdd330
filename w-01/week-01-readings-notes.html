@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>W02 Readings</title>
+  <title>W01 Readings</title>
   <style>
     body {
       font: 14px/20px BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -68,68 +68,27 @@
     Hector Olivares Tapia |
     Brigham Young University-Idaho |
     WDD 330 Web Frontend Development II |
-    Week 02: Readings notes|
-    Instructor Johan Baer |
-    May 3, 2023</strong>
+    Week 01: Readings notes|
+    Instructor Edward Nelson |
+    Sep 16th, 2023</strong>
   </div> 
   <br>
-  <pre class="one">
-        From <a href="https://javascript.info/localstorage" target="_blank" rel="noreferrer">https://javascript.info</a>
-        <a href="https://javascript.info/modifying-document" target="_blank" rel="noreferrer">1.7 Modifying the document</a>. 
-        With special attention to the <code>insertAdjacentHTML</code> section.
-        <a href="https://javascript.info/localstorage" target="_blank" rel="noreferrer">4.2 LocalStorage, sessionStorage</a>
-        <a href="https://javascript.info/import-export" target="_blank" rel="noreferrer">13.2 Modules: Import and Export</a>.
-  </pre>
   <br> 
   <pre class="one">
    <h1>Modifying the document</h1>
-  To create DOM nodes, there are two methods: 
+  Understanding of variables, scope, and template literals in JavaScript 
   <h2>Insertion methods</h2>
   </pre>
   <pre class="two">
-    &lt;style&gt;
-    .alert {
-      padding: 15px;
-      border: 1px solid #d6e9c6;
-      border-radius: 4px;
-      color: #3c763d;
-      background-color: #dff0d8;
-    }
-    &lt;/style&gt;
-
-    &lt;body&gt;
-    &lt;/body&gt;
-
-    &lt;script&gt;
-    // Creating the message
-    // Creating the message<code> div </code> takes 3 steps:
-        <code>
-        // 1. Create &lt;div&gt; element
-        let div = document.createElement('div');
-        
-        // 2. Set its class to &quot;alert&quot;
-        div.className = &quot;alert&quot;;
-        
-        // 3. Fill it with the content
-        div.innerHTML = &quot;&lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.&quot;;
-      
-        document.body.append(div);
-    &lt;/script&gt;</code>
+<ul>
+<li>JavaScript is a <strong>loosely typed</strong> language, which means that it does not require you to declare the data type of a variable when you declare it.</li>
+<li>JavaScript has <strong>six primitive data types</strong>: <code>string</code>, <code>number</code>, <code>bigint</code>, <code>boolean</code>, <code>null</code>, and <code>undefined</code>.</li>
+<li>JavaScript also has a <strong>complex data type</strong>: <code>object</code>.</li>
+<li>JavaScript provides a <strong>special value</strong>, called <code>NaN</code> (short for “Not a Number”), to represent the result of an operation that cannot produce a normal result.</li>
+<li>JavaScript provides two special values for representing <strong>empty data</strong>: <code>null</code> and <code>undefined</code>.</li>
+<li>JavaScript provides a special value, called <code>Infinity</code>, to represent mathematical infinity.</li>
+</ul>
   </pre>
-  <script>
-    // Creating the message
-    // Creating the message div  takes 3 steps:
-
-    // 1. Create <div> element
-    let div = document.createElement('div');
-
-    // 2. Set its class to "alert"
-    div.className = "alert";
-
-    // 3. Fill it with the content
-    div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
-    document.body.append(div);
-  </script>
   <br>
 </body>
 </html>
