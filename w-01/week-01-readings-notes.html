@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>W02 Readings</title>
+  <style>
+    body {
+      font: 14px/20px BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: #313130;
+      background: #fff;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+
+    .one {
+      color: #2d3b45;
+      display: block;
+      padding: 2px;
+      margin: 0 0 2px;
+      line-height: 1.2;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    .two {
+      font-size: .75rem;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+      border: 1px solid #c7cdd1;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 2px;
+      padding: 2px;
+    }
+    code {
+    font-family: Consolas,Lucida Console,Menlo,Monaco,monospace;
+    padding: 2px 4px;
+    background: #f7f4f3;
+    border-radius: 2px;
+    color: #716f6e;
+}
+  </style>
+</head>
+
+<body>
+  <br>
+  <div class="alert"> <strong>
+    Hector Olivares Tapia |
+    Brigham Young University-Idaho |
+    WDD 330 Web Frontend Development II |
+    Week 02: Readings notes|
+    Instructor Johan Baer |
+    May 3, 2023</strong>
+  </div> 
+  <br>
+  <pre class="one">
+        From <a href="https://javascript.info/localstorage" target="_blank" rel="noreferrer">https://javascript.info</a>
+        <a href="https://javascript.info/modifying-document" target="_blank" rel="noreferrer">1.7 Modifying the document</a>. 
+        With special attention to the <code>insertAdjacentHTML</code> section.
+        <a href="https://javascript.info/localstorage" target="_blank" rel="noreferrer">4.2 LocalStorage, sessionStorage</a>
+        <a href="https://javascript.info/import-export" target="_blank" rel="noreferrer">13.2 Modules: Import and Export</a>.
+  </pre>
+  <br> 
+  <pre class="one">
+   <h1>Modifying the document</h1>
+  To create DOM nodes, there are two methods: 
+  <h2>Insertion methods</h2>
+  </pre>
+  <pre class="two">
+    &lt;style&gt;
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+    &lt;/style&gt;
+
+    &lt;body&gt;
+    &lt;/body&gt;
+
+    &lt;script&gt;
+    // Creating the message
+    // Creating the message<code> div </code> takes 3 steps:
+        <code>
+        // 1. Create &lt;div&gt; element
+        let div = document.createElement('div');
+        
+        // 2. Set its class to &quot;alert&quot;
+        div.className = &quot;alert&quot;;
+        
+        // 3. Fill it with the content
+        div.innerHTML = &quot;&lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.&quot;;
+      
+        document.body.append(div);
+    &lt;/script&gt;</code>
+  </pre>
+  <script>
+    // Creating the message
+    // Creating the message div  takes 3 steps:
+
+    // 1. Create <div> element
+    let div = document.createElement('div');
+
+    // 2. Set its class to "alert"
+    div.className = "alert";
+
+    // 3. Fill it with the content
+    div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
+    document.body.append(div);
+  </script>
+  <br>
+</body>
+</html>
