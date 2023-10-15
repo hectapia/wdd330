@@ -92,8 +92,44 @@ How to upload a file using fetch() and a FormData object.
 How to track the progress of a fetch() request using Content-Length, Content-Type and response.body headers and a ReadableStream object.
 How to abort a fetch() request using an AbortController object.</p>
 </pre>
+  <br>
+<pre class="two">
+  <code>
+    let url = 'https://hectapia.github.io/wdd330/w-05/tents.json';
+    let response = await fetch(url);
+    
+    if (response.ok) { // if HTTP-status is 200-299
+      // get the response body (the method explained below)
+      let fjson = await response.json();
+      console.log(fjson)
+      alert(fjson[0].Name); 	
+    } else {
+      alert("HTTP-Error: " + response.status);
+    }
 
-   <br>  
+    <button onclick="myFunctionC()">Click me</button>
+  </code>
+</pre>
+
+<script>
+    function myFunctionC() {
+      let url = 'https://hectapia.github.io/wdd330/w-05/tents.json';
+      let response = await fetch(url);
+      
+      if (response.ok) { // if HTTP-status is 200-299
+        // get the response body (the method explained below)
+        let fjson = await response.json();
+        console.log(fjson)
+        alert(fjson[0].Name); 	
+      } else {
+        alert("HTTP-Error: " + response.status);
+      }
+    }
+  </script>
+  <br>
+
+  
+<br>  
 <pre class="one">
   <h2>3.5 Fetch: Cross-Origin Requests</h2>
 <p>The article explains how to deal with cross-origin requests using fetch(), which are requests sent to another domain, protocol or port.
