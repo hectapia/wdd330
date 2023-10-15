@@ -92,7 +92,8 @@ How to upload a file using fetch() and a FormData object.
 How to track the progress of a fetch() request using Content-Length, Content-Type and response.body headers and a ReadableStream object.
 How to abort a fetch() request using an AbortController object.</p>
 </pre>
-  <br>
+  
+<br>
 <pre class="two">
   <code>
     let url = 'https://hectapia.github.io/wdd330/w-05/tents.json';
@@ -128,6 +129,40 @@ How to abort a fetch() request using an AbortController object.</p>
   </script>
   <br>
 
+<pre class="two">
+  <code>
+    let url = 'https://hectapia.github.io/wdd330/w-05/header.html';
+    let response = await fetch(url);
+    
+    if (response.ok) { // if HTTP-status is 200-299
+      // get the response body (the method explained below)
+      let text = await response.text();
+      console.log(text)
+      alert(text); 	
+    } else {
+      alert("HTTP-Error: " + response.status);
+    }
+
+    <button onclick="myFunctionD()">Click me</button>
+  </code>
+</pre>
+
+<script>
+    async function myFunctionD() {
+      let url = 'https://hectapia.github.io/wdd330/w-05/header.html';
+      let response = await fetch(url);
+      
+      if (response.ok) { // if HTTP-status is 200-299
+        // get the response body (the method explained below)
+        let text = await response.text();
+        console.log(text)
+        alert(text); 	
+      } else {
+        alert("HTTP-Error: " + response.status);
+      }
+    }
+  </script>
+  <br>
   
 <br>  
 <pre class="one">
