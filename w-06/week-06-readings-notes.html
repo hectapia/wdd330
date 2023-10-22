@@ -160,6 +160,23 @@ The article also provides some examples and tasks to practice working with forms
  <pre class="one">
   <h2>MDN: Client-Side Form Validation</h2>
 <p>Why form validation is important and what are the benefits of client-side validation.
+
+any popular site with a registration form, and you will notice that they provide feedback when you don't enter your data in the format they are expecting. You'll get messages such as: </p>
+
+<ul>
+  <li>"This field is required" (You can't leave this field blank).</li>
+  <li>"Please enter your phone number in the format xxx-xxxx" (A specific data format is required for it to be considered valid).</li>
+  <li>"Please enter a valid email address" (the data you entered is not in the right format).</li>
+  <li>"Your password needs to be between 8 and 30 characters long and contain one uppercase letter, one symbol, and a number." (A very specific data format is required for your data).</li>
+</ul>
+
+<p>
+  This is called <strong>form validation</strong>.
+  When you enter data, the browser and/or the web server will check to see that the data is in the correct format and within the constraints set by the application. Validation done in the browser is called <strong>client-side</strong> validation, while validation done on the server is called <strong>server-side</strong> validation.
+  In this chapter we are focusing on client-side validation.
+</p>
+   
+<p>  
 How to use HTML attributes such as <strong>required</strong>, <strong>pattern</strong>, <strong>minlength</strong>, <strong>maxlength</strong>, etc. to specify validation rules for different input types<a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation" class="ac-anchor sup-target" target="_blank" data-citationid="22aeccf5-75d8-6b19-5240-4b2d450c7c95-17" aria-label="Client-side form validation - Learn web development | MDN - MDN Web Docs" h="ID=SERP,5026.1"><sup>1</sup></a>.
 How to use CSS pseudo-classes such as <strong>:valid</strong> and <strong>:invalid</strong> to style valid and invalid form controls.
 How to use JavaScript to access the <strong>ValidityState</strong> object of each form control and check its validity properties.
