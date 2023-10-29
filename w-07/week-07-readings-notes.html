@@ -23,7 +23,7 @@
       background-color: #dff0d8;
     }
 
-    .one {
+    .one, li {
       color: #2d3b45;
       display: block;
       padding: 2px;
@@ -175,12 +175,14 @@ alert(`poduct ${calculator.mul()}`);
  <pre class="one">
   <h2>This in JavaScript</h2>
 The web page explains how the <strong>this</strong> keyword works in JavaScript, which is a common source of confusion for many developers. The web page shows that the value of <strong>this</strong> depends on how a function is called, and there are six different contexts where <strong>this</strong> can take on different values. They are:
-<strong>this</strong> in global context: <strong>this</strong> refers to the <strong>Window</strong> object in the browser.
-<strong>this</strong> in object construction: <strong>this</strong> refers to the new instance of the object created with the <strong>new</strong> keyword.
-<strong>this</strong> in an object method: <strong>this</strong> refers to the object itself, which allows accessing its properties and methods.
-<strong>this</strong> in a simple function: <strong>this</strong> refers to the global object (<strong>Window</strong>) by default, but can be changed with methods like <strong>call</strong>, <strong>apply</strong>, and <strong>bind</strong>.
-<strong>this</strong> in an arrow function: <strong>this</strong> refers to the same value as the enclosing scope, which is determined by where the arrow function is defined, not where it is called.
-<strong>this</strong> in an event listener: <strong>this</strong> refers to the element that received the event, unless the listener is an arrow function or bound to a different object.
+<ol>
+<li><strong>this</strong> in global context: <strong>this</strong> refers to the <strong>Window</strong> object in the browser.</li>
+<li><strong>this</strong> in object construction: <strong>this</strong> refers to the new instance of the object created with the <strong>new</strong> keyword.</li>
+<li><strong>this</strong> in an object method: <strong>this</strong> refers to the object itself, which allows accessing its properties and methods.</li>
+<li><strong>this</strong> in a simple function: <strong>this</strong> refers to the global object (<strong>Window</strong>) by default, but can be changed with methods like <strong>call</strong>, <strong>apply</strong>, and <strong>bind</strong>.</li>
+<li><strong>this</strong> in an arrow function: <strong>this</strong> refers to the same value as the enclosing scope, which is determined by where the arrow function is defined, not where it is called.</li>
+<li><strong>this</strong> in an event listener: <strong>this</strong> refers to the element that received the event, unless the listener is an arrow function or bound to a different object.</li>
+</ol>
 <a href="https://zellwk.com/blog/this/" target="_blank">The web page</a> provides examples to illustrate how <strong>this</strong> works in each context, and also gives some tips and best practices on how to use <strong>this</strong>correctly and avoid common pitfalls.</p>
 </pre>
  <br> 
