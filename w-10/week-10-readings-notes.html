@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WDD 330 | Week 09 Readings notes</title>
+  <style>
+    body {
+      font: 14px/20px BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      color: #313130;
+      background: #fff;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+
+    .one {
+      color: #2d3b45;
+      display: block;
+      padding: 2px;
+      margin: 0 0 2px;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    .two {
+      font-size: .75rem;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+      border: 1px solid #c7cdd1;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre;
+      white-space: pre-wrap;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 2px;
+      padding: 2px;
+      font-size: large;
+    }
+
+    code {
+      font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      background: #f7f4f3;
+      border-radius: 2px;
+      color: #716f6e;
+    }
+  </style>
+</head>
+
+<body>
+  <br>
+  <div class="alert"> <strong>
+      Hector Olivares Tapia |
+      Brigham Young University-Idaho |
+      WDD 330 Web Frontend Development II |
+      Week 10: Readings notes|
+      Instructor Edward Nelson |
+      Nov 18, 2023</strong>
+  </div>
+  <br>
+
+<pre class="one">
+<h3>Execution Contexts:</h3>
+An execution context is an abstract concept used to manage the code execution in JavaScript. It consists of three main types:
+
+<strong>Global Execution Context:</strong> The default or base execution context in which the global code is executed. It creates the global object (window in a browser environment) and <code>this</code> reference.
+<strong>Function Execution Context:</strong> Created whenever a function is called, establishing its own scope, variables, and arguments.
+<strong>Eval Function Context:</strong> If code is executed <code>eval()</code>, an additional execution context is created.
+Each context has two phases: <strong>Creation</strong> and <strong>Execution</strong>.
+<h3>Call Stack:</h3>
+The call stack is a data structure used to keep track of execution contexts during code execution. Whenever a function is invoked, a new execution context for that function is created and pushed onto the call stack. When a function finishes executing, its context is popped off the stack.
+
+Let's demonstrate this with some HTML and JavaScript examples:
+</pre>
+<br>
+<pre class="two">
+    <span >&lt;<span >html</span>&gt;</span>
+    <span >&lt;<span >head</span>&gt;</span>
+      <span >&lt;<span >title</span>&gt;</span>Execution Contexts and Call Stack Example<span >&lt;/<span >title</span>&gt;</span>
+    <span >&lt;/<span >head</span>&gt;</span>
+    <span >&lt;<span >body</span>&gt;</span>
+    
+    <span >&lt;<span >script</span>&gt;</span><span >
+      <span >// Function to demonstrate the call stack</span>
+      <span >function</span> <span >greet</span>(<span >name</span>) {
+        <span >let</span> greeting = <span >`Hello, <span >${name}</span>!`</span>;
+        <span >console</span>.<span >log</span>(greeting);
+      }
+    
+      <span >function</span> <span >welcome</span>(<span ></span>) {
+        <span >console</span>.<span >log</span>(<span >"Welcome to the example!"</span>);
+      }
+    
+      <span >// Global context</span>
+      <span >console</span>.<span >log</span>(<span >"Start of the script"</span>);
+      <span >greet</span>(<span >"Alice"</span>);
+      <span >welcome</span>();
+      <span >console</span>.<span >log</span>(<span >"End of the script"</span>);
+    </span><span >&lt;/<span >script</span>&gt;</span>
+    
+    <span >&lt;/<span >body</span>&gt;</span>
+    <span >&lt;/<span >html</span>&gt;</span>
+    </code>
+</pre>
+ <br>
+<pre class="one">
+<h3>Execution Flow:</h3>
+<strong>Global Execution Context:</strong> When the HTML page is loaded, the global execution context is created. The console logs "Start of the script".
+<strong>Call to <code>greet()</code> Function:</strong> A new function execution context for <code>greet()</code> is created and pushed onto the call stack. Inside <code>greet()</code>, the <code>name</code> parameter is used to generate a greeting message which is then logged to the console. After executing, the <code>greet()</code> context is popped off the stack.
+<strong>Call to <code>welcome()</code> Function:</strong> Similar to the previous step, a new function execution context for <code>welcome()</code> is created and pushed onto the call stack. It logs "Welcome to the example!" to the console and then is popped off the stack.
+<strong>Global Context Resumes:</strong> Finally, the execution resumes in the global context, and "End of the script" is logged to the console.
+
+Understanding execution contexts and the call stack is crucial for comprehending JavaScript's behavior, especially when dealing with asynchronous code, closures, and recursion. This basic example provides an overview of how functions are executed and managed in the call stack.
+
+Callbacks and higher-order functions are fundamental concepts in JavaScript that allow for powerful and flexible programming paradigms. They are particularly useful when working with asynchronous operations, event handling, and functional programming. Let's delve into explanations and examples, including HTML code snippets to demonstrate their usage.
+
+<h3>Callback Functions:</h3>
+function and executed after a particular event or operation completes. In JavaScript, functions are first-class citizens, allowing them to be assigned to variables, passed as arguments, and returned from other functions.
+
+<h4>Example 1: Using Callbacks in JavaScript with HTML</h4>
+Consider a simple example where clicking a button triggers a callback function to display an alert:
+</pre>
+<pre class="two">
+<span>&lt;!DOCTYPE <span >html</span>&gt;</span>
+  <span >&lt;<span >html</span>&gt;</span>
+  <span >&lt;<span >head</span>&gt;</span>
+    <span >&lt;<span >title</span>&gt;</span>Callback Example<span >&lt;/<span >title</span>&gt;</span>
+  <span >&lt;/<span >head</span>&gt;</span>
+  <span >&lt;<span >body</span>&gt;</span>
+    <span >&lt;<span >button</span> <span>id</span>=<span >"myButton"</span>&gt;</span>Click me<span >&lt;/<span >button</span>&gt;</span>
+  
+    <span >&lt;<span >script</span>&gt;</span><span >
+      <span >// Callback function</span>
+      <span >function</span> <span >showAlert</span>(<span ></span>) {
+        <span >alert</span>(<span >'Button clicked!'</span>);
+      }
+  
+      <span >// Event listener with callback</span>
+      <span >document</span>.<span >getElementById</span>(<span >'myButton'</span>).<span >addEventListener</span>(<span >'click'</span>, showAlert);
+    </span><span >&lt;/<span >script</span>&gt;</span>
+  <span >&lt;/<span >body</span>&gt;</span>
+  <span >&lt;/<span >html</span>&gt;</span>
+  </code>
+</pre>
+
+<pre class="one">
+<p>In this example:</p>
+<code>showAlert</code> is a callback function passed as an argument to <code>addEventListener</code>.
+
+When the button is clicked, <code>showAlert</code> function is executed.
+
+<h3>Higher-Order Functions:</h3>
+Higher-order functions are functions that either take one or more functions as arguments or return a function as a result. They enable functional programming techniques and provide a way to abstract over actions, behaviors, or operations.
+<h4>Example 2: Higher-Order Function in JavaScript with HTML</h4>
+Let's create a higher-order function that takes a callback and an operation:
+</pre>
+<pre class="two">
+<span>&lt;!DOCTYPE <span >html</span>&gt;</span>
+    <span >&lt;<span >html</span>&gt;</span>
+    <span >&lt;<span >head</span>&gt;</span>
+      <span >&lt;<span >title</span>&gt;</span>Higher-Order Function Example<span >&lt;/<span >title</span>&gt;</span>
+    <span >&lt;/<span >head</span>&gt;</span>
+    <span >&lt;<span >body</span>&gt;</span>
+      <span >&lt;<span >p</span> <span >id</span>=<span>"output"</span>&gt;</span><span >&lt;/<span >p</span>&gt;</span>
+    
+      <span >&lt;<span >script</span>&gt;</span><span>
+        <span >// Higher-order function taking a callback</span>
+        <span >function</span> <span >manipulateData</span>(<span>data, callback</span>) {
+          <span >const</span> result = <span >callback</span>(data);
+          <span >document</span>.<span >getElementById</span>(<span >'output'</span>).<span>innerText</span> = result;
+        }
+    
+        <span >// Callback function to manipulate data (uppercase)</span>
+        <span >function</span> <span >toUppercase</span>(<span >text</span>) {
+          <span >return</span> text.<span >toUpperCase</span>();
+        }
+    
+        <span >const</span> inputText = <span >'hello, world!'</span>;
+        
+        <span >// Using the higher-order function with the callback</span>
+        <span >manipulateData</span>(inputText, toUppercase);
+      </span><span >&lt;/<span >script</span>&gt;</span>
+    <span >&lt;/<span >body</span>&gt;</span>
+    <span >&lt;/<span >html</span>&gt;</span>
+    </code>
+</pre>
+<pre class="one">
+<p>In this example:</p>
+<code>manipulateData</code> is a higher-order function that takes <code>data</code> and a <code>callback</code> function as arguments.
+
+<code>toUppercase</code> is a callback function that transforms the input text to uppercase.
+
+<code>manipulateData</code> is invoked with <code>inputText</code> and <code>toUppercase</code> as arguments.
+
+These examples demonstrate the use of callbacks and higher-order functions in JavaScript within an HTML context. Callbacks allow for asynchronous behavior and event handling, while higher-order functions facilitate functional programming concepts like abstraction and reusability.
+</pre>
+</body>
+</html>
